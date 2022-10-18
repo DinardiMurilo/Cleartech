@@ -1,0 +1,88 @@
+Language: PT/BR
+Versao 1.0
+
+Funcionalidade: Pesquisar e visualizar detalhes dos produtos.
+ 
+ #planejamento
+Realizar testes utilizando analise de valor e risco, desenvolvido atraves de BDD
+Este teste analisa a funcionalidade de pesquisar produtos dentro das categorias, subcategorias e listas
+Ferramentas utilizadas: Notebook intel i5 + 8gb ram + Windows 10, Git Bash, Visual Studio Code, Visual Studio 2022, Paint 
+#DOD: Desenvolvido cumprindo todos os requisitos, testado com testes unitarios, code review, homologacao.
+
+#Teste de regressao
+Acesse o sistema de cadastro de categorias e realize os testes
+( #campo em branco, #teste de limite de 129 caracteres, #Insercao de numeros, #Cadastro realizado com sucesso,
+ #Edicao em branco, #Edicao de nome e status e #Cadastro editado com sucesso)
+Acesse o sistema de cadastro de subcaterias e realize os testes
+( #Campo em branco SubCat, #Limite de caracteres SubCat de 129 caracteres, #Insercao de numeros e caracteres especiais SubCat, #Cadastro realizado com sucesso SubCat,
+ #Edicao em branco SubCat, #Limite de caracteres na edicao de SubCat com 129 caracteres, #Edicao de nome e status SubCat)
+
+Contexto: Dado que cadastre uma categoria
+E cadastre uma subcategoria
+E cadastre produtos
+E acesse o sistema de busca 
+
+#Config de pagina
+  Cenario: Quando acessar o sistema de busca de produtos
+  E prosseguir com a busca escolhendo o numero de registros que deseja ver
+  Entao deve visualizar <camposdevisualizacao>
+Exemplos:
+ | <camposdevisualizacao>  |
+ | Id de registro          |
+ | Nome do produto         |
+ | Valor                   |
+ | Quantidade em estoque   |
+ | Centro de distribuicao  |
+ | Categoria/subcategoria  |
+ | Status                  |
+ | Data de criacao         |
+ | Data de modificacao     |
+ 
+#Pesquisa em branco 
+Cenario: Quando realizar a busca de produtos sem inserir nenhum caractere
+ Entao deve visualizar "*Por favor insira um dado a ser pesquisado" 
+ E o sistema deve retornar ao campo que solicita um dado a ser pesquisado
+
+#Limite de caracteres na pesquisa do nome
+Esquema de Cenario: Quando prosseguir com a busca do produto utilizando o nome do produto utilizando <LimNomeSrc> caracteres
+ Entao deve visualizar <Mensagens>
+Exemplos:
+| <LimNomeSrc>   |  <Mensagens>                                                             |
+|   3            | Id de registro, Nome do produto, Valor, Centro de distribuicao, Categoria/subcategoria, Status, Data de criacao, Data de modificacao, Quantidade em estoque|
+|   64           | Id de registro, Nome do produto, Valor, Centro de distribuicao, Categoria/subcategoria, Status, Data de criacao, Data de modificacao, Quantidade em estoque|
+|   128          | Id de registro, Nome do produto, Valor, Centro de distribuicao, Categoria/subcategoria, Status, Data de criacao, Data de modificacao, Quantidade em estoque|
+|   2            | "Por favor insira um dado com mais de 3 caracteres e ate 128 caracteres" |
+|   129          | "Por favor insira um dado com mais de 3 caracteres e ate 128 caracteres" |
+
+#Pesquisa com letras e especiais nos campos de somente numeros
+Esquema de Cenario: Quando prosseguir com a busca do produto utilizando os campos de <numDesc> utilizando o letras e letras + caracteres especiais
+ Entao deve visualizar <mensagens>
+Exemplos:
+ | <numDesc>                      | <mensagens>                       |                    
+ |Peso                            | "Por favor insira somente numeros"|
+ |Altura                          | "Por favor insira somente numeros"|   
+ |Largura                         | "Por favor insira somente numeros"|  
+ |Comprimento                     | "Por favor insira somente numeros"|  
+ |Valor                           | "Por favor insira somente numeros"|  
+ |Quantidade em estoque           | "Por favor insira somente numeros"|  
+ 
+#Pesquisa com numeros decimais em Quantidade em estoque
+ Cenario: Quando acessar o sistema de busca de produtos
+  E prosseguir com a busca do produto utilizando numeros decimais no campo Quantidade em estoque
+  Entao deve visualizar "Por favor digite somente numeros inteiros"
+
+#Pesquisa atraves do Status
+  Cenario: Quando acessar o sistema de busca de produtos
+  E prosseguir com a busca selecionando as opcoes de status (Ativo, Inativo e todos)
+  Entao deve visualizar <camposdevisualizacao> com contenham o status selecionado
+Exemplos:
+ | <camposdevisualizacao>  |
+ | Id de registro          |
+ | Nome do produto         |
+ | Valor                   |
+ | Quantidade em estoque   |
+ | Centro de distribuicao  |
+ | Categoria/subcategoria  |
+ | Status                  |
+ | Data de criacao         |
+ | Data de modificacao     |

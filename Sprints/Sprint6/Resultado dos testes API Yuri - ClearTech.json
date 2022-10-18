@@ -1,0 +1,39 @@
+Resultado dos testes API Yuri - ClearTech 
+
+Teste de api online  - retorno 200 - Sucesso
+
+Cadastrar Categorias.
+
+1- Teste de Limite 1 caractere - retorno 400 - Falha - De acordo com o teste de limite se espera que seja possivel o cadastro de categoria com 1 caractere.
+2- Teste de Limite 64 caracteres - retorno 201 - Sucesso 
+3- Teste de Limite 128 caracteres - retorno 201 - Sucesso
+4- Teste de Limite 129 caracteres - retorno 400 - Sucesso
+5- Teste de Numeros - retorno 400 - Sucesso
+6- Teste de Letras + numeros - retorno 400 - Sucesso
+7- Teste de Numeros + caracteres especiais - retorno 400 - Sucesso
+8- Teste de Letras + caracteres especiais - retorno 400 - Sucesso
+9- Teste de Letras + numeros + caracteres especiais - retorno 400 - Sucesso
+10 - Teste de Campo em branco - retorno 400 - Sucesso
+11 - Teste de Letra maiuscula - retorno 201 - Sucesso
+12 - Teste de Cadastro realizado com sucesso - retorno 201 - Sucesso
+13-  Foi identificado que o sistema nao permite o cadastro de categorias utilizando nome composto/espaco no nome - Falha 
+
+Editar Categorias
+
+1- Teste de Limite 1 caractere - retorno 400 - Falha - De acordo com o teste de limite se espera que seja possivel a edicao de categoria com 1 caractere.
+2- Teste de Limite 64 caracteres - retorno 204 - Sucesso
+3- Teste de Limite 128 caracteres - retorno 204 - Sucesso
+4- Teste de Limite 129 caracteres - retorno 400 - Sucesso
+5- Teste de Numeros - retorno 400 - Sucesso
+6- Teste de Letras + numeros - retorno 400 - Sucesso
+7- Teste de Numeros + caracteres especiais - retorno 400 - Sucesso
+8- Teste de Letras + caracteres especiais - retorno 400 - Sucesso
+9- Teste de Letras + numeros + caracteres especiais - retorno 400 - Sucesso
+10- Teste de Campo em branco - retorno 400 - Sucesso
+11- Teste de Edicao de nome e status - retorno 204 - Sucesso
+12- Teste de Edicao de status - retorno 204 - Sucesso
+13- Teste Cadastro editado com sucesso - retorno 204 - Sucesso 
+14- O sistema realiza a edicao de categoria utilizando nome composto/espaco no nome sucesso - Sucesso
+
+
+

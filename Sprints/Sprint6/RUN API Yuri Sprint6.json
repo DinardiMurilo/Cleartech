@@ -1,0 +1,515 @@
+{
+	"id": "78991da8-9bbc-4513-b053-6f26bc62d2e4",
+	"name": "API cleartech",
+	"timestamp": "2022-10-17T23:52:05.729Z",
+	"collection_id": "23482990-49cb61bb-6713-48a7-b0ab-7530a0a11910",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "917ff5ff-9e32-4f3f-af5c-e1580f473e95",
+			"name": "Teste API ON",
+			"url": "https://localhost:5001/swagger/index.html",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "272b3427-73af-42e8-9fed-b85a3af08918",
+			"name": "1 caractere",
+			"url": "https://localhost:5001/Categoria",
+			"time": 12,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b7081228-68a8-45a8-b620-b3319b6c8251",
+			"name": "64 caracteres",
+			"url": "https://localhost:5001/Categoria",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ce13cd80-2cde-4419-b2c9-30c8a7bf1a8e",
+			"name": "128 caracteres",
+			"url": "https://localhost:5001/Categoria",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ddaba3b6-2b73-4a3f-b196-47a08ca85063",
+			"name": "129 caracteres",
+			"url": "https://localhost:5001/Categoria",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8ea2cd29-f11b-4c31-b81a-37d051d195f9",
+			"name": "Numeros",
+			"url": "https://localhost:5001/Categoria",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "54893b30-0504-4e1c-af5a-fd1b71e2da62",
+			"name": "letras + numeros",
+			"url": "https://localhost:5001/Categoria",
+			"time": 56,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				56
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "471529b7-ce72-432f-abf3-128019e0af25",
+			"name": "Numeros + caracteres especiais",
+			"url": "https://localhost:5001/Categoria",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "44f095d1-3a55-44db-af6d-6abf532776b3",
+			"name": "letras + caracteres especiais",
+			"url": "https://localhost:5001/Categoria",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e35cf40a-8358-46b3-9af7-e997fd912992",
+			"name": "letras + numeros + caracteres especiais",
+			"url": "https://localhost:5001/Categoria",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "24452e00-4a23-4140-9295-d46eb6f93ccd",
+			"name": "#Cadastro realizado com sucesso",
+			"url": "https://localhost:5001/Categoria",
+			"time": 54,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				54
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e06a6aca-b648-4d8a-8c17-27f278d8db97",
+			"name": "#Campo em branco",
+			"url": "https://localhost:5001/Categoria",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bdb89f78-2656-47ca-b7c0-4f5db721548a",
+			"name": "#Teste letra maiuscula",
+			"url": "https://localhost:5001/Categoria",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9306ca28-04c9-4e32-bc45-46c77083e206",
+			"name": "#Cadastro utilizando nome composto/espaço no nome",
+			"url": "https://localhost:5001/Categoria",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d9b10154-553f-47cc-b6e8-da20370f3c9e",
+			"name": "1 caractere",
+			"url": "https://localhost:5001/categoria/36",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "521b2398-c933-4570-aab8-160eddfd90ff",
+			"name": "64 carcteres",
+			"url": "https://localhost:5001/categoria/36",
+			"time": 14,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "13ec17d9-6db4-49c4-ab77-77d9ee70dd3f",
+			"name": "128 caracteres",
+			"url": "https://localhost:5001/categoria/36",
+			"time": 17,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				17
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fd5e0d14-1b01-466c-9db3-7d62bbc787f2",
+			"name": "129 caracteres",
+			"url": "https://localhost:5001/categoria/36",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "27bec7f0-044e-4aa6-a7b4-b7713f63a8c5",
+			"name": "Numeros",
+			"url": "https://localhost:5001/Categoria/36",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d997e53b-3425-494c-b8ef-7abc26395be8",
+			"name": "letras + numeros",
+			"url": "https://localhost:5001/categoria/36",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f3572e60-39f4-49bb-b301-4454dd8132c7",
+			"name": "Numeros + caracteres especiais",
+			"url": "https://localhost:5001/Categoria/36",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c66e5777-2315-41f4-a575-a6afb6fee79c",
+			"name": "letras + caracteres especiais",
+			"url": "https://localhost:5001/Categoria/36",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3cf1ae0f-005b-4701-b43e-f183070e6cae",
+			"name": "letras + numeros + caracteres especiais",
+			"url": "https://localhost:5001/Categoria/36",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2f561e2d-d581-4d50-9017-48071e32d14f",
+			"name": "#Cadastro editado com sucesso",
+			"url": "https://localhost:5001/categoria/36",
+			"time": 15,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				15
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "72e22f10-5a0d-4491-8090-d41e8d86b274",
+			"name": "#Edicao em branco",
+			"url": "https://localhost:5001/categoria/36",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6991fcd3-9af1-426b-aa3f-e9a7107bbd9c",
+			"name": "#Edicao de nome e status",
+			"url": "https://localhost:5001/categoria/36",
+			"time": 11,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ce039d21-8e7c-41f2-8e9b-d3d350595937",
+			"name": "#Edicao de status",
+			"url": "https://localhost:5001/categoria/36",
+			"time": 12,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b5549a57-54a3-47c8-abd1-f8e8229713c2",
+			"name": "#Edição utilizando nome composto/espaço no nome",
+			"url": "https://localhost:5001/categoria/36",
+			"time": 9,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],

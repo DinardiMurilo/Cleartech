@@ -1,0 +1,48 @@
+
+#Campo em branco Produto 
+Falha: O sistema permite o cadastro do nome produto em branco
+
+#Limite de caracteres do nome do produto
+Sucesso: O sistema realiza o cadastro utilizando 1 caractere
+Sucesso: O sistema realiza o cadastro utilizando 64 caracteres
+Sucesso: O sistema realiza o cadastro utilizando 128 caracteres
+Falha: O sistema realiza o cadastro do nome do do produto utilizando 129 caracteres
+
+#Insercao de caracteres especiais no nome do produto
+Sucesso: O sistema nao permite o cadastro do nome do produto utilizando caracteres especiais
+
+#Limite de Caracteres na descricao
+Sucesso: O sistema realiza o cadastro utilizando 1 caractere
+Sucesso: O sistema realiza o cadastro utilizando 256 caracteres
+Sucesso: O sistema realiza o cadastro utilizando 512 caracteres
+Falha: O sistema realiza o cadastro utilizando 513 caracteres
+
+#Obrigatorio Descricao de Produto
+Falha: O sistema permite o cadastro da descricao sem a insercao de caracteres/campo em branco
+
+#Cadastro de Produto realizado com sucesso
+Sucesso: O sistema realiza o cadastro do nome produto
+
+#Vinculo do Produto a categoria/subcategoria inativa
+Falha: Quando acessado a area para edicao da subcategoria entra em um loop e 
+nao e possivel retornar ao menu principal
+
+#Mudanca de status da categoria/subcategoria apos vinculo de produto
+Falha: O sistema permite categoria/subcategoria apos sua criacao e vinculo com categoria/subcategoria
+
+#Numeros inteiros Quantidade em estoque
+Falha: O sistema nao permite o cadastro utilizando numeros decimais, mas occore um erro e o sistema 
+apresenta o codigo fonte com o possivel local da falha
+Sucesso: O sistema cadastra Quantidade em estoque quando utilizado numeros inteiros
+
+#Insercao de letras e caracteres especiais na <especNum> 
+Falha: O sistema nao permite a inclusao de letras e caracteres especiais nos campos 
+de <especNum> porem o sistema trava e o codigo fonte e exibido
+
+#Numeros inteiros nas descricoes em decimal
+Falha: O sistema permite o cadastro dos dados com numeros decimais
+
+
+
+
+
