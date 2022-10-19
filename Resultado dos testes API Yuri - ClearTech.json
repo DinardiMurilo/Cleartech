@@ -1,0 +1,43 @@
+Resultado dos testes API Yuri - ClearTech 
+
+1- Teste de api online  - retorno 200 - Sucesso
+
+
+Cadastrar Categorias.
+
+1- Teste de Campo em branco                          |  retorno 400 | Sucesso
+2- Teste de Letra maiuscula                          |  retorno 201 | Sucesso
+3- Teste de Cadastro utilizando                      |  retorno 400 | Falha - Nao foi possivel cadastrar uma categoria com nome e sobrenome.
+    nome composto/espaco no nome   
+4- Teste de Limite 1 caractere                       |  retorno 400 | Falha - Nao foi possivel o cadastro de categoria com 1 caractere.
+5- Teste de Limite 64 caracteres                     |  retorno 201 | Sucesso 
+6- Teste de Limite 128 caracteres                    |  retorno 201 | Sucesso
+7- Teste de Limite 129 caracteres                    |  retorno 400 | Sucesso
+8- Teste de Numeros                                  |  retorno 400 | Sucesso
+9- Teste de Letras + numeros                         |  retorno 400 | Sucesso
+10- Teste de Numeros + caracteres especiais          |  retorno 400 | Sucesso
+11- Teste de Letras + caracteres especiais           |  retorno 400 | Sucesso
+12- Teste de Letras + numeros + caracteres especiais |  retorno 400 | Sucesso
+15- Teste de Cadastro realizado com sucesso          |  retorno 201 | Sucesso
+
+Editar Categorias
+
+1- Teste de edicao de categoria utilizando           | retorno 204 | Sucesso
+      nome composto/espaco no nome sucesso        
+2- Teste de Limite 1 caractere                       | retorno 400 | Falha  - Nao foi possivel a edicao do nome da categoria com 1 caractere.
+3- Teste de Limite 64 caracteres                     | retorno 204 | Sucesso
+4- Teste de Limite 128 caracteres                    | retorno 204 | Sucesso
+5- Teste de Limite 129 caracteres                    | retorno 400 | Sucesso
+6- Teste de Numeros                                  | retorno 400 | Sucesso
+7- Teste de Letras + numeros                         | retorno 400 | Sucesso
+8- Teste de Numeros + caracteres especiais           | retorno 400 | Sucesso
+9- Teste de Letras + caracteres especiais            | retorno 400 | Sucesso
+10- Teste de Letras + numeros + caracteres especiais | retorno 400 | Sucesso
+11- Teste de Campo em branco                         | retorno 400 | Sucesso
+12- Teste de Edicao de nome e status                 | retorno 204 | Sucesso
+13- Teste de Edicao de status                        | retorno 204 | Sucesso
+14- Teste Cadastro editado com sucesso               | retorno 204 | Sucesso 
+
+
+QA: Murilo Dinardi
+
