@@ -1,0 +1,16 @@
+Como lojista
+Eu quero cadastrar uma subcategoria
+Entao poderei organizar os produtos
+
+Campos necessarios:
+Nome da subcategoria (obrigatario - 128 caracteres - somente alfabeto).
+
+Criterios de aceite:
+Cadastrar apenas 1 subcategoria.
+Toda subcategoria cadastrada deve ser registrada com o status de ativo;
+Toda subcategoria cadastrada deve ser registrada com a data e hora de criacao;
+Nao e possivel cadastrar uma subcategoria com nome vazio;
+Deve ser lancado uma excecao quando entrar nesse caso;
+Criar propriedades Get Set;
+Criar os metodos de subcategoria;
+Criar os atributos de subcategoria.

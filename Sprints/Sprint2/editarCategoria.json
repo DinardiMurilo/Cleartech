@@ -1,0 +1,46 @@
+#Language: PT/BR
+Versao 1.0
+
+Funcionalidade: Sistema que edita categorias pre cadastradas
+
+#planejamento
+Realizar testes utilizando analise de valor e risco, desenvolvido atraves de BDD.
+Este teste analisa a funcionalidade de editar categorias.
+Ferramentas utilizadas: Notebook intel i5 + 8gb ram + Windows 10, Git Bash, Visual Studio Code, Visual Studio 2022, Paint 
+#DOD: Desenvolvido cumprindo todos os requisitos, testado com testes unitarios, teste de integracao, code review, homologacao.
+Determinar como 'Pronto' quando o sistema editar categorias.
+
+Contexto: Dado que acesso o sistema de edicao de categorias
+
+#Edicao em branco  
+ Quando submeter alteracao sem inserir nenhum caractere
+ Entao deve visualizar "*Por favor insira um nome para a categoria" 
+ 
+ #Teste de limite Edit
+ Esquema de cenario: Quando inserir o nome da categoria utilizando <numeros> caracteres 
+ Entao deve visualizar <mensagens>
+Exemplos: 
+| <Numeros>  |   <Mensagens>                                                            |
+| 1          | "Cadastro realizado com sucesso"                                         |
+| 64         | "Cadastro realizado com sucesso"                                         |
+| 128        | "Cadastro realizado com sucesso"                                         |
+| 129        | "Cadastro nao realizado, Por favor insira um nome com ate 128 caracteres"|
+
+#Edicao de nome e status
+ Quando digitar novo nome a ser cadastrado cumprindo os requisitos 
+ E selecionar o status como inativo
+ Entao deve visualizar "*Cadastro alterado com sucesso + Status inativo + Nome atual da categoria + dd/mm/aa + hr:min de modificacao"
+
+#Edicao de status
+ Quando acessar a opcao de alterar o status da categoria
+ E selecionar o status como inativo
+ Entao deve visualizar "*Cadastro alterado com sucesso + Status inativo + Nome da categoria + dd/mm/aa + hr:min de modificacao"
+
+#Cadastro editado com sucesso
+ Quando digitar novo nome a ser cadastrado cumprindo os requisitos 
+ E manter o status
+ Entao deve visualizar "*Cadastro alterado com sucesso + Status Ativo + Nome atual da categoria + dd/mm/aa + hr:min de modificacao"
+ 
+ #Cadastro editado nome duplicado
+ Quando realizar realizar a edicao de duas categorias utilizando o mesmo nome para ambas
+ Entao deve visualizar "Categoria existente, por favor insira uma nome diferente para categoria" 

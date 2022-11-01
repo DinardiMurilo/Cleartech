@@ -1,0 +1,43 @@
+Resultado dos testes API Yuri - ClearTech 
+QA Tester: Murilo Dinardi
+
+1- Teste de api online  - retorno 200 - Sucesso
+
+
+Cadastrar Subcategorias.
+
+1- Teste de Limite 1 caractere                       |  retorno 400 | Falha   - Cadastro nao realizado, de acordo com teste de limite deve haver o cadastro com 1 caractere.
+2- Teste de Limite 64 caracteres                     |  retorno 201 | Sucesso - Cadastro realizado como esperado.
+3- Teste de Limite 128 caracteres                    |  retorno 201 | Sucesso - Cadastro realizado como esperado.
+4- Teste de Limite 129 caracteres                    |  retorno 400 | Sucesso - Cadastro nao realizado, de acordo ao esperado.
+5- Teste de Numeros                                  |  retorno 400 | Sucesso - Cadastro nao realizado, de acordo ao esperado.
+6- Teste de Letras + numeros                         |  retorno 400 | Sucesso - Cadastro nao realizado, de acordo ao esperado.
+7- Teste de Numeros + caracteres especiais           |  retorno 400 | Sucesso - Cadastro nao realizado, de acordo ao esperado.
+8- Teste de Letras + caracteres especiais            |  retorno 400 | Sucesso - Cadastro nao realizado, de acordo ao esperado.
+9- Teste de Letras + numeros + caracteres especiais  |  retorno 400 | Sucesso - Cadastro nao realizado, de acordo ao esperado.
+10- Teste de Cadastro realizado com sucesso          |  retorno 201 | Sucesso - Cadastro realizado como esperado.
+11- Teste de Campo em branco                         |  retorno 400 | Sucesso - Cadastro nao realizado, de acordo ao esperado.
+12- Teste de Cadastro utilizando                     |  retorno 201 | Sucesso - E possivel cadastrar uma categoria com nome e sobrenome.
+    nome composto/espaco no nome   
+13- Cadastro Duplicado                               |  retorno 201 | Falha   - Cadastro realizado gerando duas subcategorias com o mesmo nome.
+14- Cadastro de Subcategoria em Categoria Inativa    |  retorno 404 | Sucesso - O Sistema nao permite o cadastro de subcategoria em categoria inativa.
+
+Editar SubCategorias
+
+1- Teste de Limite 1 caractere                       | retorno 400 | Falha   - Alteracao negada, de acordo com teste de limite deve haver o cadastro com 1 caractere.
+2- Teste de Limite 64 caracteres                     | retorno 204 | Sucesso - Cadastro alterado como esperado.
+3- Teste de Limite 128 caracteres                    | retorno 204 | Sucesso - Cadastro alterado como esperado.
+4- Teste de Limite 129 caracteres                    | retorno 400 | Sucesso - Alteracao negada, funcionamento de acordo com o esperado.
+5- Teste de Numeros                                  | retorno 400 | Sucesso - Alteracao negada, funcionamento de acordo com o esperado.
+6- Teste de Letras + numeros                         | retorno 400 | Sucesso - Alteracao negada, funcionamento de acordo com o esperado.
+7- Teste de Numeros + caracteres especiais           | retorno 400 | Sucesso - Alteracao negada, funcionamento de acordo com o esperado.
+8- Teste de Letras + caracteres especiais            | retorno 400 | Sucesso - Alteracao negada, funcionamento de acordo com o esperado.
+9- Teste de Letras + numeros + caracteres especiais  | retorno 400 | Sucesso - Alteracao negada, funcionamento de acordo com o esperado.
+10- #Edicao em branco SubCat                         | retorno 400 | Sucesso - Alteracao negada, funcionamento de acordo com o esperado.
+12- Teste de Edicao de status                        | retorno 204 | Sucesso - Cadastro alterado como esperado.
+13- Teste Cadastro editado com sucesso               | retorno 204 | Sucesso - Cadastro alterado como esperado.
+14- Teste de edicao de categoria utilizando          | retorno 204 | Sucesso - Cadastro alterado como esperado.
+      nome composto/espaco no nome sucesso        
+15- Edicao realizada utilizando letra maiuscula      | retorno 204 | Sucesso - Cadastro alterado como esperado.
+
+
