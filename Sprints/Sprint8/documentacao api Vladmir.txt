@@ -1,0 +1,109 @@
+categoria 
+
+create http://localhost:5000/categoria
+update http://localhost:5000/categoria/1
+get http://localhost:5000/categoria
+GetId http://localhost:5000/categoria/1
+
+
+subcat  
+
+create http://localhost:5000/subcategoria
+Update http://localhost:5000/subcategoria/1
+get http:http://localhost:5000/subcategoria
+GetId http:http://localhost:5000/subcategoria/1
+
+
+centroDeDistribuicao
+
+create http://localhost:5000/Centro
+Update http://localhost:5000/Centro/1
+get http://localhost:5000/Centro
+GetId http://localhost:5000/Centro/1
+
+Produto
+
+create http://localhost:5000/Produto
+Update http://localhost:5000/Produto/1
+get http:http://localhost:5000/Produto
+GetId http://localhost:5000/Produto/1
+
+
+Json create Categoria
+{
+    "Nome": "Frutas"
+}
+
+upDate json Categoria
+{
+    "Nome": "pera",
+    "Status": false
+}
+
+
+Json createSub 
+{
+    "Nome": "pera",
+    "Status": false
+}
+
+update Json sub
+{
+    
+        "nome": "Pera",
+        "status": false
+}
+
+
+Json create centro
+{
+    "Nome":"Vegetble",
+    "CEP":"03935045",
+    "Numero":9,
+     "Complemento":"Proximo ao paraiso vejetal"
+}
+
+
+json Update centro;
+
+{
+    "nome": "Fabrica Bis",
+    "logradouro": "Rua do CaCau ",
+    "numero": 55,
+    "complemento": "proximo ao essencia club chocolate",
+    "bairro": "Jd peri",
+    "cidade": "Sao Paulo",
+    "uf": "SP",
+    "cep": "02679010",
+    "status": true
+}
+
+
+JSon Create Prod
+{
+     "nome": "Traquinas",
+        "descricao": "perfeito para preparar lanchinho fim de tarde",
+        "peso": 0,
+        "altura": 0,
+        "largura": 0,
+        "comprimento": 0,
+        "valor": 2.50,
+        "quantidadeEmEstoque": 100,
+        "subCategoriaId":2,
+        "CentroDeDistribuicaoId":2
+}
+
+Update Prod
+
+    {
+    "nome": "traquina",
+    "descricao": "saboroso biscoito recheado",
+    "peso": 0,
+    "altura": 0,
+    "largura": 0,
+    "comprimento": 0,
+    "valor": 20,
+    "quantidadeEmEstoque": 100,
+    "CentrodeDistribuicaoID": 1,
+    "status": true
+    }

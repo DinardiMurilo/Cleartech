@@ -1,0 +1,48 @@
+Language: PT/BR
+Versao 1.0
+
+Funcionalidade: Cadastrar centro de distribuicao.
+ 
+ #planejamento
+Realizar testes utilizando analise de valor e risco, desenvolvido atraves de BDD
+Este teste analisa a funcionalidade de cadastrar centro de distribuicao.
+Ferramentas utilizadas: Notebook intel i5 + 8gb ram + Windows 10, Git Bash, Visual Studio Code, Visual Studio 2022, Paint 
+#DOD: Desenvolvido cumprindo todos os requisitos, testado com testes unitarios, testes automatizados, code review, homologacao.
+
+#Teste de regressao
+Acesse o sistema de cadastro de categorias e realize os testes
+( #campo em branco, #teste de limite de 129 caracteres, #Insercao de numeros, #Cadastro realizado com sucesso,
+ #Edicao em branco, #Edicao de nome e status e #Cadastro editado com sucesso)
+Acesse o sistema de cadastro de subcaterias e realize os testes
+( #Campo em branco SubCat, #Limite de caracteres SubCat de 129 caracteres, #Insercao de numeros e caracteres especiais SubCat, #Cadastro realizado com sucesso SubCat,
+#Edicao em branco SubCat, #Limite de caracteres na edicao de SubCat com 129 caracteres, #Edicao de nome e status SubCat)
+
+
+#Cadastro de Produto realizado com sucesso
+Cenario: Quando inserir o nome do centro de distribuicao cumprindo os requisitos
+ E inserir todas especificacoes necessarias cumprindo os requisitos
+ Entao deve visualizar "*cadastro realizado com sucesso, Status Ativo + nome do centro de distribuicao + DD/MM/AA + hr:min" 
+
+#Cadastro duplicado
+Cenario: Quando realizar o cadastro de um centro de distribuicao 
+ E realizar o cadastro de um novo centro de distribuicao utilizando o mesmo nome e numero.
+ Entao deve visualizar "Centro de distribucao existente"
+
+#Campo em branco centro de distribuicao 
+ Quando cadastrar um centro de distribuicao sem inserir nenhum caractere 
+ Entao deve visualizar "*Por favor preencha o campo" 
+ E o sistema deve retornar ao campo que solicita o nome do produto         
+
+#Insercao de letras e caracteres especiais no <centro de distribuicao> 
+Esquema de Cenario: Dado que cadastre um produto
+ Quando inserir letras e letras + caracteres especiais no preenchimento dos campos de <centro de distribuicao> 
+ Entao deve visualizar <Mensagens>    
+Exemplos:
+| <centro de distribuicao>        | <Mensagens>                        | 
+| letras + numeros                | "*Por favor digite somente letras" | 
+| letras + especiais              | "*Por favor digite somente letras" |
+| numeros + especiais             | "*Por favor digite somente letras" |
+| numeros + especiais + letras    | "*Por favor digite somente letras" |
+| letras + virgula                | "*Por favor digite somente letras" |
+| letras e hifen                  | "*Por favor digite somente letras" |
+

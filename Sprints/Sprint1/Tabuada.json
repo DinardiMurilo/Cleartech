@@ -1,0 +1,12 @@
+DESAFIO - Sprint 1
+
+Eu, como usuário, gostaria de um algoritmo que irá apresentar a tabuada (do 1 ao 10) do número informado pelo usuário para ter visibilidade do que você aprendeu 
+
+Critérios de aceite:
+
+Deve ser feito em javascript utilizando o P5 (https://editor.p5js.org)
+Deve ser utilizado variáveis
+Deve ser utilizado laços de repetição
+Usuário não pode inserir número maior que 10
+Só pode ser informado números inteiros
+Usuário não pode inserir números menores ou igual a 0

@@ -1,0 +1,806 @@
+{
+	"info": {
+		"_postman_id": "2d2d46c9-8427-4322-99d5-318f5c873158",
+		"name": "apiVladOn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23482990"
+	},
+	"item": [
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "Cadastrar Categoria",
+					"item": [
+						{
+							"name": "Teste de Limites",
+							"item": [
+								{
+									"name": "2 caracteres",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//teste do Status Code\r",
+													"pm.test(\"teste do Status Code\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"//teste do Tempo de Resposta\r",
+													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"});\r",
+													"\r",
+													"//teste da Mensagem de Erro\r",
+													"pm.test(\"teste da Mensagem de Erro\",() => {\r",
+													"  pm.expect(pm.response.text()).to.include(\"minimo de 3 caracteres não atingido\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{tokenV}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"ya\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:5000/categoria"
+									},
+									"response": []
+								},
+								{
+									"name": "3 caracteres",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//teste do Status Code\r",
+													"pm.test(\"teste do Status Code\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"\r",
+													"//teste do Tempo de Resposta\r",
+													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"});\r",
+													"\r",
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"//teste do ID\r",
+													"pm.test(\"teste do ID\", () => {\r",
+													"  pm.expect(jsonData.id).to.be.a(\"number\");});\r",
+													"\r",
+													"//teste do nome \r",
+													"pm.test(\"teste do nome\", () => {\r",
+													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
+													"\r",
+													"//teste do status\r",
+													"pm.test(\"teste do status\", () => {\r",
+													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
+													"\r",
+													"//teste do vinculo a subcategoria\r",
+													"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
+													"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{tokenV}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"uno\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:5000/categoria"
+									},
+									"response": []
+								},
+								{
+									"name": "25 caracteres",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//teste do Status Code\r",
+													"pm.test(\"teste do Status Code\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"\r",
+													"//teste do Tempo de Resposta\r",
+													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"});\r",
+													"\r",
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"//teste do ID\r",
+													"pm.test(\"teste do ID\", () => {\r",
+													"  pm.expect(jsonData.id).to.be.a('number');});\r",
+													"\r",
+													"//teste do nome \r",
+													"pm.test(\"teste do nome\", () => {\r",
+													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
+													"\r",
+													"//teste do status\r",
+													"pm.test(\"teste do status\", () => {\r",
+													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
+													"\r",
+													"//teste do vinculo a subcategoria\r",
+													"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
+													"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{tokenV}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"testedelimwnegcbracbstyqs\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:5000/categoria"
+									},
+									"response": []
+								},
+								{
+									"name": "50 caracteres",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"\r",
+													"//teste do Status Code\r",
+													"pm.test(\"teste do Status Code\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"\r",
+													"//teste do Tempo de Resposta\r",
+													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"});\r",
+													"\r",
+													"const jsonData = pm.response.json();\r",
+													"\r",
+													"//teste do ID\r",
+													"pm.test(\"teste do ID\", () => {\r",
+													"  pm.expect(jsonData.id).to.be.a(\"number\");});\r",
+													"\r",
+													"//teste do nome \r",
+													"pm.test(\"teste do nome\", () => {\r",
+													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
+													"\r",
+													"//teste do status\r",
+													"pm.test(\"teste do status\", () => {\r",
+													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
+													"\r",
+													"//teste do vinculo a subcategoria\r",
+													"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
+													"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{tokenV}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"uestedelimitexoaracberetsssssqsitnsbspeyssssssssss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:5000/Categoria"
+									},
+									"response": []
+								},
+								{
+									"name": "51 caracteres",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//teste do Status Code\r",
+													"pm.test(\"teste do Status Code\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"//teste do Tempo de Resposta\r",
+													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"});\r",
+													"\r",
+													"//teste da Mensagem de Erro\r",
+													"pm.test(\"teste da Mensagem de Erro\",() => {\r",
+													"  pm.expect(pm.response.text()).to.include(\"Tamanho maximo de 50 caracteres excedido\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "{{tokenV}}"
+											}
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteressssdsssssssssssssssssssssss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:5000/Categoria"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Insercao de numeros e caracteres especiais",
+							"item": [
+								{
+									"name": "Numeros",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"123456\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:5000/Categoria"
+									},
+									"response": []
+								},
+								{
+									"name": "letras + numeros",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc123\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:5000/Categoria"
+									},
+									"response": []
+								},
+								{
+									"name": "Numeros + caracteres especiais",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"123!@#\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:5000/Categoria"
+									},
+									"response": []
+								},
+								{
+									"name": "letras + caracteres especiais",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc!@#\"\r\n} ",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:5000/Categoria"
+									},
+									"response": []
+								},
+								{
+									"name": "letras + numeros + caracteres especiais",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc123!@#\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:5000/Categoria"
+									},
+									"response": []
+								}
+							],
+							"auth": {
+								"type": "bearer",
+								"bearer": {
+									"token": "{{tokenV}}"
+								}
+							},
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											"",
+											"//teste do Status Code",
+											"pm.test(\"teste do Status Code\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"//teste do Tempo de Resposta",
+											"pm.test(\"teste do Tempo de Resposta\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"});",
+											"",
+											"//teste da Mensagem de Erro",
+											"const jsonData = pm.response.json();",
+											"",
+											"pm.test(\"teste da Mensagem de Erro\", () => {",
+											"  pm.expect(jsonData.errors.Nome[0]).to.eql('O campo nome deve conter apenas letras');",
+											"});",
+											"",
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "#Campo em branco",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//teste do Status Code\r",
+											"pm.test(\"teste do Status Code\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"//teste do Tempo de Resposta\r",
+											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"\r",
+											"//teste da Mensagem de Erro\r",
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"pm.test(\"teste da Mensagem de Erro\", () => {\r",
+											"  pm.expect(jsonData.errors.Nome[0]).to.eql('O Campo nome é obrigatorio');\r",
+											" \r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{tokenV}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/Categoria"
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro utilizando nome composto/espaço no nome",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//teste do Status Code\r",
+											"pm.test(\"teste do Status Code\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"//teste do Tempo de Resposta\r",
+											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"\r",
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"//teste do ID\r",
+											"pm.test(\"teste do ID\", () => {\r",
+											"  pm.expect(jsonData.id).to.be.a('number');});\r",
+											"\r",
+											"//teste do nome \r",
+											"pm.test(\"teste do nome\", () => {\r",
+											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
+											"\r",
+											"//teste do status\r",
+											"pm.test(\"teste do status\", () => {\r",
+											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
+											"\r",
+											"//teste do vinculo a subcategoria\r",
+											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
+											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{tokenV}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"padaria de testssaaaaeessassss\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/Categoria"
+							},
+							"response": []
+						},
+						{
+							"name": "#Teste letra maiuscula",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//teste do Status Code\r",
+											"pm.test(\"teste do Status Code\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"//teste do Tempo de Resposta\r",
+											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"\r",
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"//teste do ID\r",
+											"pm.test(\"teste do ID\", () => {\r",
+											"  pm.expect(jsonData.id).to.be.a('number');});\r",
+											"\r",
+											"//teste do nome \r",
+											"pm.test(\"teste do nome\", () => {\r",
+											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
+											"\r",
+											"//teste do status\r",
+											"pm.test(\"teste do status\", () => {\r",
+											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
+											"\r",
+											"//teste do vinculo a subcategoria\r",
+											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
+											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{tokenV}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"PaodsarsaibaseaadaaafsS\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/Categoria"
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro duplicado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//teste do Status Code\r",
+											"pm.test(\"teste do Status Code\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"//teste do Tempo de Resposta\r",
+											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"\r",
+											"//teste da Mensagem de Erro\r",
+											"pm.test(\"Body contains string\",() => {\r",
+											"  pm.expect(pm.response.text()).to.include(\"A categoria ja existe\");\r",
+											"});\r",
+											" "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{tokenV}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Konopelski\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/categoria"
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro com sucesso",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//teste do Status Code\r",
+											"pm.test(\"teste do Status Code\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"//teste do Tempo de Resposta\r",
+											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"});\r",
+											"\r",
+											"const jsonData = pm.response.json();\r",
+											"\r",
+											"//teste do ID\r",
+											"pm.test(\"teste do ID\", () => {\r",
+											"  pm.expect(jsonData.id).to.be.a('number');});\r",
+											"\r",
+											"//teste do nome \r",
+											"pm.test(\"teste do nome\", () => {\r",
+											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
+											"\r",
+											"//teste do status\r",
+											"pm.test(\"teste do status\", () => {\r",
+											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
+											"\r",
+											"//teste do vinculo a subcategoria\r",
+											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
+											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{tokenV}}"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"{{$randomLastName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:5000/Categoria"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

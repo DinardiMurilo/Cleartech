@@ -1,0 +1,150 @@
+{
+	"id": "7f60956a-29cb-4e39-92e7-652463259436",
+	"name": "API YURI",
+	"timestamp": "2022-10-28T19:32:43.560Z",
+	"collection_id": "23482990-49cb61bb-6713-48a7-b0ab-7530a0a11910",
+	"folder_id": "23482990-5158dd46-a6e1-4f2f-a8a4-159b4a2906fb",
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "55069a83-d3c4-4461-a47f-a185b6ff767f",
+			"name": "#Cadastro utilizando nome composto/espaço no nome Copy",
+			"url": "https://localhost:5001/Categoria",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fbf2ae7d-9f16-4d18-bcdc-c08702f620e9",
+			"name": "#Campo em branco Copy",
+			"url": "https://localhost:5001/Categoria",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0e75229e-40c1-4ca2-9c08-3beef06b99f2",
+			"name": "1 caractere Copy",
+			"url": "https://localhost:5001/Categoria",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5515d3f8-55a8-4f26-8e29-124ea2244ef1",
+			"name": "129 caracteres Copy",
+			"url": "https://localhost:5001/Categoria",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a00a91fa-aea7-4b43-88a3-83670193eb6a",
+			"name": "1 caractere Copy",
+			"url": "https://localhost:5001/categoria/5",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8d5a5824-6aea-4a08-bc5c-092a9de8ec33",
+			"name": "#Edição utilizando nome composto/espaço no nome Copy",
+			"url": "https://localhost:5001/categoria/4",
+			"time": 8,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 30,
+	"collection": {
+		"requests": [
+			{
+				"id": "55069a83-d3c4-4461-a47f-a185b6ff767f",
+				"method": "POST"
+			},
+			{
+				"id": "fbf2ae7d-9f16-4d18-bcdc-c08702f620e9",
+				"method": "POST"
+			},
+			{
+				"id": "0e75229e-40c1-4ca2-9c08-3beef06b99f2",
+				"method": "POST"
+			},
+			{
+				"id": "5515d3f8-55a8-4f26-8e29-124ea2244ef1",
+				"method": "POST"
+			},
+			{
+				"id": "a00a91fa-aea7-4b43-88a3-83670193eb6a",
+				"method": "PUT"
+			},
+			{
+				"id": "8d5a5824-6aea-4a08-bc5c-092a9de8ec33",
+				"method": "PUT"
+			}
+		]
+	}
+}

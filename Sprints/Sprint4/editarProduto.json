@@ -1,0 +1,95 @@
+Language: PT/BR
+Versao 1.0
+
+Funcionalidade: Edita os produtos cadastrados.
+ 
+ #planejamento
+Realizar testes utilizando analise de valor e risco, desenvolvido atraves de BDD
+Este teste analisa a funcionalidade de pesquisar produtos dentro das categorias, subcategorias e listas
+Ferramentas utilizadas: Notebook intel i5 + 8gb ram + Windows 10, Git Bash, Visual Studio Code, Visual Studio 2022, Paint 
+#DOD: Desenvolvido cumprindo todos os requisitos, testado com testes unitarios, code review, homologacao.
+
+#Teste de regressao
+Acesse o sistema de cadastro de categorias e realize os testes
+( #campo em branco, #teste de limite de 129 caracteres, #Insercao de numeros, #Cadastro realizado com sucesso,
+ #Edicao em branco, #Edicao de nome e status e #Cadastro editado com sucesso)
+Acesse o sistema de cadastro de subcaterias e realize os testes
+( #Campo em branco SubCat, #Limite de caracteres SubCat de 129 caracteres, #Insercao de numeros e caracteres especiais SubCat, #Cadastro realizado com sucesso SubCat,
+#Edicao em branco SubCat, #Limite de caracteres na edicao de SubCat com 129 caracteres, #Edicao de nome e status SubCat)
+ 
+Contexto: Dado que cadastre uma categoria
+E cadastre uma subcategoria
+E cadastre um produto
+E que escolha a opcao de editar os dados do produtos
+
+#Edicao em branco  
+ Cenario: Quando prossseguir a edicao do nome sem inserir nenhum caractere
+ Entao deve visualizar "*Por favor insira um nome para o produto" 
+ E o sistema deve retornar ao campo que solicita um nome para o produto
+
+ #Limite de caracteres na edicao do nome
+ Esquema de Cenario: Quando acessar o sistema de edicao de produtos
+ E prosseguir com a edicao do nome do produto utilizando <limNome> caracteres
+ Entao deve visualizar <mensagens>
+Exemplos: 
+| <limNome>   | <Mensagens>                                                                          |
+|  1          | "Cadastro alterado com sucesso, Status Ativo + nome do produto + DD/MM/AA + hr:min"  |
+|  64         | "Cadastro alterado com sucesso, Status Ativo + nome do produto + DD/MM/AA + hr:min"  |
+| 128         | "Cadastro alterado com sucesso, Status Ativo + nome do produto + DD/MM/AA + hr:min"  |
+| 129         | "Cadastro nao alterado, Por favor insira um nome com ate 128 caracteres"             |
+
+#Obrigatorio preenchimento das edicoes
+Esquema de cenario: Quando editar o nome do produto com sucesso
+ E prosseguir com a edicao de <dados> com o campo em branco
+ Entao deve visualizar <mensagens>
+Exemplo:
+| <dados>                  | <mensagens>                   |
+|Descricao do produto      | "*Por favor preencha o campo" |
+|Peso                      | "*Por favor preencha o campo" |
+|Altura                    | "*Por favor preencha o campo" |
+|Largura                   | "*Por favor preencha o campo" |
+|comprimento               | "*Por favor preencha o campo" |
+|Valor                     | "*Por favor preencha o campo" |
+|Quantidade em estoque     | "*Por favor preencha o campo" |
+|Centro de distribuicao    | "*Por favor preencha o campo" |
+|Categoria/subcategoria    | "*Por favor preencha o campo" |
+|Status                    | "*Por favor escolha um status"|
+
+#Limite de Caracteres na edicao da descricao
+Esquema de Cenario: Dado que mantenha o nome do produto
+ Quando editar a descricao do produto utilizando <limDesc> caracteres
+ Entao deve visualizar <mensagens>
+Exemplos:
+| <limDesc>  |   <mensagens>                                                                                |
+|  1         | "*cadastro alterado com sucesso Status Ativo + nome inserido + DD/MM/AA + hr:min"; <fsSysNxt>|
+|  256       | "*cadastro alterado com sucesso Status Ativo + nome inserido + DD/MM/AA + hr:min"; <fsSysNxt>|
+|  512       | "*cadastro alterado com sucesso Status Ativo + nome inserido + DD/MM/AA + hr:min"; <fsSysNxt>|
+|  513       | "Por favor insira uma descricao com ate 512 caracteres"                                      |
+
+#Edicao das <especNum> utilizando letras
+Esquema de cenario: Quando realizar a edicao de nome do produto cumprindo os requisitos
+ E realizar a edicao de <especNum> utilizando letras do alfabeto
+ Entao deve visualizar <mensagens>  
+Exemplos:
+ | <especNum>             |  <mensagens>                        |
+ | Peso                   | "Por favor, insira somente numeros" |
+ | Altura                 | "Por favor, insira somente numeros" |
+ | Largura                | "Por favor, insira somente numeros" |
+ | Comprimento            | "Por favor, insira somente numeros" |
+ | Valor                  | "Por favor, insira somente numeros" |
+ | Quantidade em estoque  | "Por favor, insira somente numeros" |
+ 
+#Edicao de nome e status de produto
+Cenario: Quando digitar novo nome a ser cadastrado cumprindo os requisitos
+E salvar o novo nome
+Entao visualize a opcao para alteracao de status
+Quando selecionar o status como inativo
+ Entao deve visualizar "*Cadastro alterado com sucesso + Status inativo + Nome atual do produto + dd/mm/aa + hr:min de modificacao"
+
+#Edicao de status de produtos
+Cenario: Quando selecionar o status como inativo
+ Entao deve visualizar "*Cadastro alterado com sucesso + Status inativo + Nome do produto + dd/mm/aa + hr:min de modificacao"
+
+ #Edicao de nome do produto
+ Cenario: Quando digitar novo nome a ser cadastrado cumprindo os requisitos e mantendo status
+ Entao deve visualizar "*Cadastro alterado com sucesso + Status Ativo + Nome atual do produto + dd/mm/aa + hr:min de modificacao"

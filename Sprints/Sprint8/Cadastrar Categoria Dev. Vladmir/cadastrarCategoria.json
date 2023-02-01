@@ -1,0 +1,58 @@
+#Language: PT/BR
+Versao 1.0
+QA Tester: Murilo Dinardi
+
+Funcionalidade: Sistema que realiza cadastro de categorias
+
+#planejamento
+Realizar testes utilizando analise de valor e risco, desenvolvido atraves de BDD.
+Este teste analisa a funcionalidade de cadastrar categorias.
+Ferramentas utilizadas: Notebook intel i5 + 8gb ram + Windows 10, Git Bash, Visual Studio Code, Visual Studio 2022, Paint 
+#DOD: Desenvolvido cumprindo todos os requisitos, testado com testes unitarios, teste de integracao, code review, homologacao.
+Determinar como 'Pronto' quando o sistema cadastrar categorias.
+
+Contexto: Dado que acesso o sistema de cadastro de categorias
+
+#Cadastro duplicado
+ Quando realizar o cadastro de categoria cumprindo todos requisitos
+ E realizar novo cadastro utilizando o mesmo nome para a categoria
+ Entao deve visualizar "Categoria existente, por favor insira um nome diferente para categoria"
+
+#Campo em branco
+ Quando submeter cadastrar nova categoria sem inserir nenhum caractere
+ E pressionar o botao de acao para cadastrar categoria 
+ Entao deve visualizar "*Por favor insira um nome para a categoria" 
+
+#Teste de limite
+ Esquema de cenario: Quando inserir o nome da categoria utilizando <numeros> caracteres 
+ Entao deve visualizar <mensagens>
+Exemplos: 
+| <Numeros>  |  <Mensagens>                                                             |
+|  2         | "Cadastro nao realizado, Por favor utilize de 3 ate 50 caracteres"       | 
+|  3         | "Cadastro realizado com sucesso"                                         |
+|  25        | "Cadastro realizado com sucesso"                                         |
+|  50        | "Cadastro realizado com sucesso"                                         |
+|  51        | "Cadastro nao realizado, Por favor utilize de 3 ate 50 caracteres"       |
+
+#Insercao de numeros e caracteres especiais
+ Esquema de cenario: Quando inserir o nome da categoria utilizando <numLet> 
+ E determinar a acao para realizar o cadastro
+ Entao deve visualizar "*Cadastro nao realizado, por favor insira somente letras do alfabeto"
+ Exemplos: 
+ | <numLet>                     | 
+ | numeros                      |                             
+ | numeros + letras             |                       
+ | numeros + especiais          |                      
+ | letras + especiais           |
+ | numeros + letras + especiais | 
+
+#Teste letra maiuscula
+ Quando inserir o nome da categoria utilizando letra maiuscula
+ E pressionar o botao de acao para cadastrar categoria 
+ Entao deve visualizar "*cadastro realizado com sucesso Status Ativo + nome inserido + DD/MM/AA + hr:min" 
+
+#Cadastro realizado com sucesso
+ Quando inserir o nome da categoria cumprindo os requisitos
+ E pressionar o botao de acao para cadastrar categoria 
+ Entao deve visualizar "*cadastro realizado com sucesso Status Ativo + nome inserido + DD/MM/AA + hr:min" 
+

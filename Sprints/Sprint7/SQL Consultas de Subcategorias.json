@@ -1,0 +1,8 @@
+use subcategoriadb;
+
+select * from subcategorias where ID = 7;
+
+Select * from categorias;
+
+Select * from subcategorias;
+

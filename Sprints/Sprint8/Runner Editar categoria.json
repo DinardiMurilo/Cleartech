@@ -1,0 +1,374 @@
+{
+	"id": "3a09a213-dbdf-47de-be21-8a1176c9f68b",
+	"name": "API Vladmir",
+	"timestamp": "2023-01-10T00:11:28.718Z",
+	"collection_id": "23482990-b5f02c68-a658-49af-9da3-bebbf1c8ba93",
+	"folder_id": "23482990-7efa3604-0bcb-4ed7-82ce-be83c2541c58",
+	"environment_id": "0",
+	"totalPass": 21,
+	"totalFail": 5,
+	"results": [
+		{
+			"id": "bc62edaa-fb40-4f41-826f-c6f5b0b789ef",
+			"name": "Numeros",
+			"url": "http://localhost:5000/Categoria/86",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"teste do Status Code": true,
+				"teste do Tempo de Resposta": true,
+				"teste da Mensagem de Erro": true
+			},
+			"testPassFailCounts": {
+				"teste do Status Code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste do Tempo de Resposta": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste da Mensagem de Erro": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"teste do Status Code": true,
+					"teste do Tempo de Resposta": true,
+					"teste da Mensagem de Erro": true
+				}
+			]
+		},
+		{
+			"id": "8179ca66-52a9-4aa0-bda7-a8ae3d017c58",
+			"name": "letras + numeros",
+			"url": "http://localhost:5000/categoria/85",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"teste do Status Code": true,
+				"teste do Tempo de Resposta": true,
+				"teste da Mensagem de Erro": true
+			},
+			"testPassFailCounts": {
+				"teste do Status Code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste do Tempo de Resposta": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste da Mensagem de Erro": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"teste do Status Code": true,
+					"teste do Tempo de Resposta": true,
+					"teste da Mensagem de Erro": true
+				}
+			]
+		},
+		{
+			"id": "d83dbd89-93e2-4103-98f8-5aecdd0bff08",
+			"name": "Numeros + caracteres especiais",
+			"url": "http://localhost:5000/Categoria/85",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"teste do Status Code": true,
+				"teste do Tempo de Resposta": true,
+				"teste da Mensagem de Erro": true
+			},
+			"testPassFailCounts": {
+				"teste do Status Code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste do Tempo de Resposta": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste da Mensagem de Erro": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"teste do Status Code": true,
+					"teste do Tempo de Resposta": true,
+					"teste da Mensagem de Erro": true
+				}
+			]
+		},
+		{
+			"id": "023f4cd2-685c-49a8-99a7-d1bd5fc53a8f",
+			"name": "letras + caracteres especiais",
+			"url": "http://localhost:5000/Categoria/85",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"teste do Status Code": true,
+				"teste do Tempo de Resposta": true,
+				"teste da Mensagem de Erro": true
+			},
+			"testPassFailCounts": {
+				"teste do Status Code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste do Tempo de Resposta": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste da Mensagem de Erro": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"teste do Status Code": true,
+					"teste do Tempo de Resposta": true,
+					"teste da Mensagem de Erro": true
+				}
+			]
+		},
+		{
+			"id": "245f17a7-8194-40cd-a703-f5152e178cca",
+			"name": "letras + numeros + caracteres especiais",
+			"url": "http://localhost:5000/Categoria/85",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"teste do Status Code": true,
+				"teste do Tempo de Resposta": true,
+				"teste da Mensagem de Erro": true
+			},
+			"testPassFailCounts": {
+				"teste do Status Code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste do Tempo de Resposta": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste da Mensagem de Erro": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"teste do Status Code": true,
+					"teste do Tempo de Resposta": true,
+					"teste da Mensagem de Erro": true
+				}
+			]
+		},
+		{
+			"id": "16585ca9-9e87-4cbb-bcbc-27e20ac8e7cc",
+			"name": "#Edição utilizando nome composto/espaço no nome",
+			"url": "http://localhost:5000/categoria/4",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"teste do Status Code": false,
+				"teste do Tempo de Resposta": true,
+				"teste do ID": false,
+				"teste do nome": false,
+				"teste do status": false,
+				"teste do vinculo a subcategoria": false
+			},
+			"testPassFailCounts": {
+				"teste do Status Code": {
+					"pass": 0,
+					"fail": 1
+				},
+				"teste do Tempo de Resposta": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste do ID": {
+					"pass": 0,
+					"fail": 1
+				},
+				"teste do nome": {
+					"pass": 0,
+					"fail": 1
+				},
+				"teste do status": {
+					"pass": 0,
+					"fail": 1
+				},
+				"teste do vinculo a subcategoria": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"teste do Status Code": false,
+					"teste do Tempo de Resposta": true,
+					"teste do ID": false,
+					"teste do nome": false,
+					"teste do status": false,
+					"teste do vinculo a subcategoria": false
+				}
+			]
+		},
+		{
+			"id": "346d1166-de79-4223-a624-7b63a85a87ac",
+			"name": "#Edicao em branco",
+			"url": "http://localhost:5000/categoria/4",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"teste do Status Code": true,
+				"teste do Tempo de Resposta": true,
+				"teste da Mensagem de Erro": true
+			},
+			"testPassFailCounts": {
+				"teste do Status Code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste do Tempo de Resposta": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste da Mensagem de Erro": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"teste do Status Code": true,
+					"teste do Tempo de Resposta": true,
+					"teste da Mensagem de Erro": true
+				}
+			]
+		},
+		{
+			"id": "ecaa74d5-3c8b-4da6-9bb3-b4132a753b7c",
+			"name": "#Edicao de nome e status",
+			"url": "http://localhost:5000/categoria/7",
+			"time": 10,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"teste do Status Code": true,
+				"teste do Tempo de Resposta": true
+			},
+			"testPassFailCounts": {
+				"teste do Status Code": {
+					"pass": 1,
+					"fail": 0
+				},
+				"teste do Tempo de Resposta": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"teste do Status Code": true,
+					"teste do Tempo de Resposta": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 39,
+	"collection": {
+		"requests": [
+			{
+				"id": "bc62edaa-fb40-4f41-826f-c6f5b0b789ef",
+				"method": "PUT"
+			},
+			{
+				"id": "8179ca66-52a9-4aa0-bda7-a8ae3d017c58",
+				"method": "PUT"
+			},
+			{
+				"id": "d83dbd89-93e2-4103-98f8-5aecdd0bff08",
+				"method": "PUT"
+			},
+			{
+				"id": "023f4cd2-685c-49a8-99a7-d1bd5fc53a8f",
+				"method": "PUT"
+			},
+			{
+				"id": "245f17a7-8194-40cd-a703-f5152e178cca",
+				"method": "PUT"
+			},
+			{
+				"id": "16585ca9-9e87-4cbb-bcbc-27e20ac8e7cc",
+				"method": "PUT"
+			},
+			{
+				"id": "346d1166-de79-4223-a624-7b63a85a87ac",
+				"method": "PUT"
+			},
+			{
+				"id": "ecaa74d5-3c8b-4da6-9bb3-b4132a753b7c",
+				"method": "PUT"
+			}
+		]
+	}
+}

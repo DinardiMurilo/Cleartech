@@ -1,0 +1,57 @@
+Language: PT/BR
+Versao 1.0
+
+Funcionalidade: Cadastrar uma subcategoria
+ 
+ #planejamento
+Realizar testes utilizando analise de valor e risco, desenvolvido atraves de BDD
+Este teste analisa a funcionalidade de cadastrar subcategorias
+Ferramentas utilizadas: Notebook intel i5 + 8gb ram + Windows 10, Git Bash, Visual Studio Code, Visual Studio 2022, Paint 
+Determinar como 'Pronto' quando o sistema cadastrar e editar subcategorias cumprindo todos os requisitos.
+
+#Teste de regressao
+Acesse o sistema de cadastro e edicao de categorias e realize os testes
+( #campo em branco, #teste de limite de 129 caracteres, #Insercao de numeros, #Cadastro realizado com sucesso,
+ #Edicao em branco,  #Teste de limite Edit, #Edicao de nome e status e #Cadastro editado com sucesso)
+
+Contexto: Dado que acesso o sistema de cadastro de subcategorias
+
+#Campo em branco SubCat
+ Quando cadastrar uma subcategoria sem inserir nenhum caractere
+ Entao deve visualizar "*Por favor insira um nome para a subcategoria" 
+ E o sistema deve retornar ao campo que solicita um nome para cadastro de subcategorias
+
+#Cadastro duplicado
+ Quando realizar o cadastro de subcategoria cumprindo todos requisitos
+ E realizar novo cadastro utilizando o mesmo nome
+ Entao deve visualizar "Subcategoria existente, por favor insira uma nova categoria"
+
+#Limite de caracteres SubCat
+ Esquema de cenario: Quando inserir o nome da subcategoria utilizando <numeros> caracteres
+ E pressionar o botao de acao para cadastrar subcategoria 
+ Entao deve visualizar <mensagens>
+Exemplos: 
+| <Numeros>  |  <Mensagens>                                                             |
+|  2         | "Cadastro nao realizado, Por favor utilize de 3 ate 50 caracteres"       | 
+|  3         | "Cadastro realizado com sucesso"                                         |
+|  25        | "Cadastro realizado com sucesso"                                         |
+|  50        | "Cadastro realizado com sucesso"                                         |
+|  51        | "Cadastro nao realizado, Por favor utilize de 3 ate 50 caracteres"       |
+
+#Insercao de numeros e caracteres especiais SubCat
+ Esquema de cenario: Quando inserir o nome da subcategoria utilizando <alternativas> 
+ E determinar a acao para realizar o cadastro
+ Entao deve visualizar <Mensagens>          
+Exemplos: 
+ | <alternativas>                 |  <Mensagens>                                                                  |
+ | numeros                        | "*Cadastro nao realizado, por favor insira somente letras do alfabeto"        |                           
+ | numeros + letras               | "*Cadastro nao realizado, por favor insira somente letras do alfabeto"        |                          
+ | numeros + especiais            | "*Cadastro nao realizado, por favor insira somente letras do alfabeto"        |                          
+ | letras + especiais             | "*Cadastro nao realizado, por favor insira somente letras do alfabeto"        |        
+ | numeros + letras + especiais   | "*Cadastro nao realizado, por favor insira somente letras do alfabeto"        |        
+
+#Cadastro realizado com sucesso SubCat
+ Quando inserir o nome da subcategoria cumprindo os requisitos
+ E pressionar o botao cadastrar subcategoria 
+ Entao deve visualizar "*cadastro realizado com sucesso Status Ativo + nome inserido + DD/MM/AA + hr:min" 
+

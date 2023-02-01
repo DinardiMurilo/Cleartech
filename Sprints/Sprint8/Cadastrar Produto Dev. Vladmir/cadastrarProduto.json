@@ -1,0 +1,127 @@
+Language: PT/BR
+Versao 1.0
+
+Funcionalidade: Cadastrar produtos.
+ 
+ #planejamento
+Realizar testes utilizando analise de valor e risco, desenvolvido atraves de BDD
+Este teste analisa a funcionalidade de pesquisar produtos dentro das categorias, subcategorias e listas
+Ferramentas utilizadas: Notebook intel i5 + 8gb ram + Windows 10, Git Bash, Visual Studio Code, Visual Studio 2022, Paint 
+#DOD: Desenvolvido cumprindo todos os requisitos, testado com testes unitarios, code review, homologacao.
+
+#Teste de regressao
+Acesse o sistema de cadastro de categorias e realize os testes
+( #campo em branco, #teste de limite de 129 caracteres, #Insercao de numeros, #Cadastro realizado com sucesso,
+ #Edicao em branco, #Edicao de nome e status e #Cadastro editado com sucesso)
+Acesse o sistema de cadastro de subcaterias e realize os testes
+( #Campo em branco SubCat, #Limite de caracteres SubCat de 129 caracteres, #Insercao de numeros e caracteres especiais SubCat, #Cadastro realizado com sucesso SubCat,
+#Edicao em branco SubCat, #Limite de caracteres na edicao de SubCat com 129 caracteres, #Edicao de nome e status SubCat)
+
+contexto: 
+ Dado que cadastre uma categoria
+ E cadastre uma subcategoria
+ E que acesse o sistema de cadastro de produtos
+          
+#Campo em branco Produto 
+Cenario:
+ Quando cadastrar um produto sem inserir nenhum caractere 
+ Entao deve visualizar "*Por favor preencha o campo solicitado" 
+ E o sistema deve retornar ao campo que solicita o nome do produto         
+
+#Teste de limites do nome do produto
+Esquema de Cenario: Quando inserir o nome do produto utilizando <limNome> caracteres
+ Entao deve visualizar <mensagens>
+Exemplos: 
+| <limNome>     | <Mensagens>                                                          |
+|  2            | "Cadastro nao realizado, Por favor utilize de 3 ate 50 caracteres"   | 
+|  3            | "Cadastro realizado com sucesso"                                     |
+| 64            | "Cadastro realizado com sucesso"                                     |
+| 128           | "Cadastro realizado com sucesso"                                     |
+| 129           | "Cadastro nao realizado, Por favor utilize de 3 ate 50 caracteres"   |
+
+#Insercao de caracteres especiais no nome do produto
+Cenario: Quando inserir o nome do produto utilizando caracteres especiais
+ Entao deve visualizar "*Por favor insira somente letras e numeros"
+
+#Teste de Limites na descricao
+Esquema de Cenario: Dado que cadastre o nome de um produto
+ Quando cadastrar a descricao do produto utilizando <limDesc> caracteres
+ Entao visualizar <Mensagens>
+Exemplos:
+| <limDesc>  |   <Mensagens>                                           |
+| 2          | "Cadastro realizado; <fsSysNxt>"                        |
+| 256        | "Cadastro realizado; <fsSysNxt>"                        |
+| 512        | "Cadastro realizado; <fsSysNxt>"                        |
+| 513        | "Por favor insira uma descricao com ate 512 caracteres" |
+
+#Obrigatorio Descricao de Produto
+Esquema de Cenario: Dado que cadastre o nome de um produto
+ Quando cadastrar <obrigatorios>
+ Entao visualize <mensagens>
+Exemplos:
+| <obrigatorios>         |    <mensagens>                                  |
+| Descricao do produto   | "O campo de <obrigatorios> deve ser preenchido" |
+| Peso                   | "O campo de <obrigatorios> deve ser preenchido" |
+| Altura                 | "O campo de <obrigatorios> deve ser preenchido" |
+| Largura                | "O campo de <obrigatorios> deve ser preenchido" |
+| Comprimento            | "O campo de <obrigatorios> deve ser preenchido" |
+| Valor                  | "O campo de <obrigatorios> deve ser preenchido" |
+| Quantidade em estoque  | "O campo de <obrigatorios> deve ser preenchido" |
+| Centro de distribuicao | "O campo de <obrigatorios> deve ser preenchido" |
+| Categoria/subcategoria | "O campo de <obrigatorios> deve ser preenchido" |
+  
+#Cadastro de Produto realizado com sucesso
+Cenario: Quando inserir o nome do produto cumprindo os requisitos
+ E inserir todas especificacoes necessarias cumprindo os requisitos
+ E realizar o vinculo a uma categoria e subcategoria ativa
+ Entao deve visualizar "*cadastro realizado com sucesso Status Ativo + nome do produto + DD/MM/AA + hr:min" 
+
+#Vinculo do Produto a categoria/subcategoria inativa
+Cenario: Dado que cadastre um produto
+ E realizar o vinculo a uma categoria/subcategoria inativa 
+Entao deve visualizar "Por favor, escolha uma categoria/subcategoria Ativa"
+
+#Mudanca de status da categoria apos vinculo de produto
+Cenario: Dado que cadastre um produto vinculado a uma categoria e subcategoria ativa
+  Quando solicitado a alteracao de status de categoria de ativo para inativo
+  Entao deve visualizar "*Nao e possivel alterar o status para inativo pois a categoria/subcategoria possui produtos vinculados"
+
+#Mudanca de status da subcategoria apos vinculo de produto
+  Cenario: Dado que cadastre um produto vinculado a uma categoria e subcategoria ativa
+  Quando solicitado a alteracao de status de subcategoria de ativo para inativo
+  Entao deve visualizar "*Nao e possivel alterar o status para inativo pois a categoria/subcategoria possui produtos vinculados"
+ 
+#Numeros inteiros Quantidade em estoque
+Esquema de Cenario: Dado que cadastre um produto
+ Quando inserir o valor de <IntDec> para Quantidade em estoque 
+ E prosseguir com o cadastro
+ Entao deve visualizar <Mensagens>
+Exemplos: 
+| <IntDec>        | <Mensagens>                                 | 
+|numeros inteiros | >fsSystemNXT                                |
+|numeros decimais | "*Por favor insira somente numeros inteiros"|
+
+#Insercao de letras e caracteres especiais na <especNum> 
+Esquema de Cenario: Dado que cadastre um produto
+ Quando inserir letras e letras + caracteres especiais no preenchimento dos campos de <especNum> 
+ Entao deve visualizar <Mensagens>    
+Exemplos:
+| <especNum>             |  <Mensagens>                        | 
+| Peso                   | "*Por favor digite somente numeros" | 
+| Altura                 | "*Por favor digite somente numeros" |
+| Largura                | "*Por favor digite somente numeros" |
+| Comprimento            | "*Por favor digite somente numeros" |
+| Valor                  | "*Por favor digite somente numeros" |
+| Quantidade em estoque  | "*Por favor digite somente numeros" |
+
+#Numeros inteiros nas descricoes em decimal
+ Esquema de cenario: Dado que cadastre o nome de um produto
+ Quando inserir numeros inteiros nos campos de <descDec>
+ Entao visualize <mensagens>
+Exemplos:
+| <descDec>    |  <mensagens>                                |
+| Peso         | "Por favor insira somente numeros decimais" |
+| Altura       | "Por favor insira somente numeros decimais" |
+| Largura      | "Por favor insira somente numeros decimais" |
+| Comprimento  | "Por favor insira somente numeros decimais" |
+| Valor        | "Por favor insira somente numeros decimais" |
