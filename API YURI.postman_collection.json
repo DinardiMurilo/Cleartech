@@ -1,0 +1,1893 @@
+{
+	"info": {
+		"_postman_id": "49cb61bb-6713-48a7-b0ab-7530a0a11910",
+		"name": "API YURI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23482990"
+	},
+	"item": [
+		{
+			"name": "teste API ON",
+			"item": [
+				{
+					"name": "Teste API ON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{servidor}}/swagger/index.html",
+							"host": [
+								"{{servidor}}"
+							],
+							"path": [
+								"swagger",
+								"index.html"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "Cadastrar Categoria",
+					"item": [
+						{
+							"name": "Teste de Limites",
+							"item": [
+								{
+									"name": "1 caractere",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"a\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "64 caracteres",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssssssssssssssssss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "128 caracteres",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "129 caracteres",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteressssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Insercao de numeros e caracteres especiais",
+							"item": [
+								{
+									"name": "Numeros",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"123456\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + numeros",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc123\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Numeros + caracteres especiais",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"123!@#\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + caracteres especiais",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc!@#\"\r\n} ",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + numeros + caracteres especiais",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc123!@#\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "#Campo em branco",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Categoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Categoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro utilizando nome composto/espaço no nome",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Padaria de teste\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Categoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Categoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Teste letra maiuscula",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"AAAA\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Categoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Categoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro realizado com sucesso",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"testeSubCategoria\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Categoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Categoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro duplicado",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"testeSubCategoria\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/categoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Editar Categoria",
+					"item": [
+						{
+							"name": "Teste de Limites",
+							"item": [
+								{
+									"name": "1 caractere",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"a\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/categoria/36",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"categoria",
+												"36"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "64 carcteres",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssssssssssssssssss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/categoria/36",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"categoria",
+												"36"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "128 caracteres",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/categoria/36",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"categoria",
+												"36"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "129 caracteres",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteressssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/categoria/36",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"categoria",
+												"36"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Alteração com numeros e caracteres especiais",
+							"item": [
+								{
+									"name": "Numeros",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"23456\",\r\n  \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria/36",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria",
+												"36"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + numeros",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"Zer0\",\r\n  \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/categoria/36",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"categoria",
+												"36"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Numeros + caracteres especiais",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"234!@#\",\r\n  \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria/36",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria",
+												"36"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + caracteres especiais",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"234!@#\",\r\n  \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria/36",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria",
+												"36"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + numeros + caracteres especiais",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc234!@#\",\r\n  \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria/36",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria",
+												"36"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "#Edição utilizando nome composto/espaço no nome",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Padaria Atualizado\",\r\n  \"status\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/categoria/36",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"36"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Edicao em branco",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/categoria/36",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"36"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Edicao de nome e status",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"AlteracaoDeNome\",\r\n  \"status\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/categoria/36",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"36"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Edicao de status",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Padaria\",\r\n  \"status\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/categoria/3",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro editado com sucesso",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"PadariaAtualizado\",\r\n  \"status\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/categoria/2",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro editado nome duplicado",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"PadariaAtualizado\",\r\n  \"status\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/categoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Subcategorias",
+			"item": [
+				{
+					"name": "Cadastrar SubCategoria",
+					"item": [
+						{
+							"name": "Teste de limites SubCategoria",
+							"item": [
+								{
+									"name": "1 caractere",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"T\",\r\n  \"categoriaId\": 7\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "64 caracteres",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssssssssssssssssss\",\r\n  \"categoriaId\": 7\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "128 caracteres",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\",\r\n  \"categoriaId\": 7\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "129 caracteres",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteressssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\",\r\n  \"categoriaId\": 7\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Insercao de numeros e caracteres especiais Copy",
+							"item": [
+								{
+									"name": "Numeros",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"123456\",\r\n  \"categoriaId\": 7\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + numeros",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"AbcD456\",\r\n  \"categoriaId\":7\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Numeros + caracteres especiais",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": " {\r\n  \"nome\": \"123!@#\",\r\n  \"categoriaId\": 7\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + caracteres especiais",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": " {\r\n  \"nome\": \"Abc!@#\",\r\n  \"categoriaId\": 7\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + numeros + caracteres especiais",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc123!@#\",\r\n  \"categoriaId\": 7\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "#Campo em branco SubCat",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"\",\r\n  \"categoriaId\": 7\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Subcategoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro utilizando nome composto/espaço no nome",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"SubCategoria Swagger\",\r\n  \"categoriaId\": 7\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/subCategoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"subCategoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro realizado com sucesso SubCat",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"PaoDoceDeTeste\",\r\n  \"categoriaId\": 7\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Subcategoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro duplicado",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"PaoDoceDeTeste\",\r\n  \"categoriaId\": 7\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Subcategoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro de Subcategoria em Categoria Inativa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"PaoDoceDeTeste\",\r\n  \"categoriaId\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Subcategoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Editar SubCategoria",
+					"item": [
+						{
+							"name": "Teste de limites SubCategoria",
+							"item": [
+								{
+									"name": "1 caractere",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"a\",\r\n\"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "64 caracteres",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssssssssssssssssss\",\r\n \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "128 caracteres",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\",\r\n \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "129 caracteres",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteressssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\",\r\n  \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Insercao de numeros e caracteres especiais",
+							"item": [
+								{
+									"name": "Numeros",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"123456\",\r\n \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + numeros",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc123\",\r\n \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Numeros + caracteres especiais",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"123!@#\",\r\n  \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + caracteres especiais",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc!@#\",\r\n \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "letras + numeros + caracteres especiais",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"abc123!@#\",\r\n  \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "#Campo em branco SubCat",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"\",\r\n  \"status\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Subcategoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Edição utilizando nome composto/espaço no nome",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"Padaria Atualizado\",\r\n  \"status\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/subcategoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"subcategoria",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Edicao de status",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"PadariaDeTestes\",\r\n  \"status\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/subcategoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"subcategoria",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro Editado com sucesso SubCat",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"PadariaDeTestesEditadoComSucesso\",\r\n\"status\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Subcategoria/7",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria",
+										"7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Edicao realizada utilizando letra maiuscula",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"PadariaDeTestesEditadoLetraM\",\r\n\"status\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/subcategoria/7",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"subcategoria",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Testes Regressivos",
+			"item": [
+				{
+					"name": "Testes Regressivos de Categorias",
+					"item": [
+						{
+							"name": "Cadastrar Categoria",
+							"item": [
+								{
+									"name": "#Cadastro utilizando nome composto/espaço no nome Copy",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"Padaria de teste\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "#Campo em branco Copy",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "1 caractere Copy",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"a\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "129 caracteres Copy",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteressssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Editar Categoria",
+							"item": [
+								{
+									"name": "1 caractere Copy",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"a\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/categoria/5",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"categoria",
+												"5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "#Edição utilizando nome composto/espaço no nome Copy",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"nome\": \"Padaria Regressivo\",\r\n  \"status\": true\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{servidor}}/categoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"categoria",
+												"4"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Testes Regressivos de SubCategorias",
+					"item": [
+						{
+							"name": "129 caracteres Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteressssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\"\r\n \"categoriaId\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Subcategoria/",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Campo em branco SubCat Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"\",\r\n  \"categoriaId\": 0\r\n}"
+								},
+								"url": {
+									"raw": "{{servidor}}/Subcategoria/",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "129 caracteres Copy",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteressssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\",\r\n  \"status\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{servidor}}/Subcategoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Campo em branco SubCat Copy",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"\",\r\n  \"status\": true\r\n}"
+								},
+								"url": {
+									"raw": "{{servidor}}/Subcategoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
