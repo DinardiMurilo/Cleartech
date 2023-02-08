@@ -23,6 +23,8 @@ k6_load_test:
       uses: grafana/k6-action@v0.2.0
       with:
         filename: index.js
+          cloud: true
+        token: ${{ 349c29a50a32d811566113304451e32f3d058d1a964a4baa4210e97be9edfe60 }}
 
     runs-on: ubuntu-latest
 
