@@ -7,7 +7,6 @@ Montar um script com o relatório (reporte) e enviar por e-mail - ENTREGÁVEL PR
 Apresentar e executar o script enviado anteriormente, explicando os motivos do planejamento - ENTREGÁVEL NA REVIEW
 
 
-
 1. Teste de Carga (Load Test)
 Testa o software sob as condições normais de uso, para identificar o comportamento 
 do sistema sob uma carga específica esperada. O que pode ser, 
@@ -20,6 +19,7 @@ do sistema com o objetivo de encontrar o limite da aplicação.
 3. Teste de Estabilidade (Soak testing)
 Testa o software com uma carga contínua durante longos períodos de tempo, para determinar se o 
 sistema terá um comportamento adequado na utilização de memória durante o teste.
+
 
 como realizar o teste de performance / Api Vladmir
 
@@ -54,8 +54,9 @@ Faca a instalacao do export HTML para o k6 e utilize a versao com frontend resul
 
 Teste realizado
 
-Para esta Api utilize o teste de stress
-Realize testes com 5 segundos, 10 segundos e 30 segundos.
+Para esta Api utilizei o teste de carga
+Realize testes com 5 segundos e 10 segundos
+
 Falando do teste utilizando 5 segundos observamos que:
 Simulando 10 usuarios temos o minimo de 10 VU's e o maximo de 10 VU's
 Simulando 50 usuarios temos o minimo de 50 VU's e o maximo de 50 VU's
@@ -68,4 +69,19 @@ Simulando 1000 usuarios temos o minimo de 802 VU's e o maximo de 1000 VU's
 
 Percebe-se que o numero minimo e o maximo de virtual users deixa de ser igual entre 700 e 800 usuarios simultaneos
 Ou seja, apos diversos testes escalando o aumento de usuarios podemos identificar que o sistema gera diferenca a partir desse momento.
-O tempo medio para realizacao da requisicao foi de 11,03 com 700 VU's para 22,35 com 800 VU's. 
+O tempo medio para realizacao das requisicoes foram de 11,03 com 700 VU's e 22,35 com 800 VU's. 
+ 
+
+Falando do teste utilizando 10 segundos observamos que:
+Simulando 10 usuarios temos o minimo de 10 VU's e o maximo de 10 VU's
+Simulando 50 usuarios temos o minimo de 50 VU's e o maximo de 50 VU's
+Simulando 100 usuarios temos o minimo de 100 VU's e o maximo de 100 VU's
+Simulando 300 usuarios temos o minimo de 300 VU's e o maximo de 300 VU's
+Simulando 500 usuarios temos o minimo de 436 VU's e o maximo de 500 VU's
+Simulando 700 usuarios temos o minimo de 698 VU's e o maximo de 700 VU's
+Simulando 800 usuarios temos o minimo de 799 VU's e o maximo de 800 VU's
+Simulando 1000 usuarios temos o minimo de 667 VU's e o maximo de 1000 VU's
+
+Agora podemos ver que o teste apresenta diferenca nos indicadores de usuarios simultaneos a partir do teste de 500 VU's
+A curva de usuarios minimos e maximos demonstra estabilidade nos dois testes a seguir e no teste final observamos uma dispairidade, o numero minimo de usuarios simultaneos é de apenas 667VU's
+O tempo médio para realizacao das requisicoes foram de 1.68ms para 50VU's, 6.20ms para 100VU's, 22.34ms para 300VU's e 17.89ms para 500VU's
