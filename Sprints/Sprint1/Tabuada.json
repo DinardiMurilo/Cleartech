@@ -1,12 +1,22 @@
-DESAFIO - Sprint 1
+let n1;
+let result;
 
-Eu, como usuário, gostaria de um algoritmo que irá apresentar a tabuada (do 1 ao 10) do número informado pelo usuário para ter visibilidade do que você aprendeu 
 
-Critérios de aceite:
 
-Deve ser feito em javascript utilizando o P5 (https://editor.p5js.org)
-Deve ser utilizado variáveis
-Deve ser utilizado laços de repetição
-Usuário não pode inserir número maior que 10
-Só pode ser informado números inteiros
-Usuário não pode inserir números menores ou igual a 0
+function tabuada(n1){
+
+let éInteiro = Number.isInteger(n1)
+
+if(n1 < 0 || n1 > 10 || éInteiro === false){
+console.log("Erro, digite um numero inteiro de 1 a 10! ")
+
+
+}
+else{
+for (let contador = 1; contador <= 10; contador ++){
+let result = contador * n1
+console.log (n1 + " X " + contador + " = " + result )
+}
+}
+}
+console.log(tabuada(INSIRA O NUMERO DESEJADO AQUI))

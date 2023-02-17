@@ -1,5 +1,4 @@
 [QA] Desafio - Sprint 2
-QA Tester: Murilo Dinardi
 
 Eu, como stakeholder, gostaria de visualizar os cenários de teste referente as 2 histórias (Cadastrar e Editar Categorias)
 Link das histórias:
@@ -20,7 +19,7 @@ Então poderei organizar os produtos.
 Campos necessários:
 Nome da categoria 
 é campo obrigatório 
-deve ter até 50 caracteres 
+deve ter até 128 caracteres 
 somente letras alfabeto.
 Critérios de aceite:
 Toda categoria cadastrada deve ser registrada com o status de ativo.

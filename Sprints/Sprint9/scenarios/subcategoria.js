@@ -10,14 +10,16 @@ export let GetSubcategoriaSuccessRate = new Rate('get_subcategoria_success_rate'
 export let GetSubcategoriaReqs = new Rate('get_subcategoria_reqs');
 
 export default function() {
-    let res = http.get('https://localhost:5001/subcategoria', {
+    let res = http.get("https://localhost:5001/subcategoria", {
       headers: {
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiI5OTk5OSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZGF0ZW9mYmlydGgiOiIwMS8wMS8wMDAxIDAwOjAwOjAwIiwiZXhwIjoxNjc1ODIwNDY4fQ.TPRosMPvHnOOpdg93bkZFKbIZ77yhhO6EL_YMFpdGvI',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiI5OTk5OSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZGF0ZW9mYmlydGgiOiIwMS8wMS8wMDAxIDAwOjAwOjAwIiwiZXhwIjoxNjc2NjM3NjgzfQ.CcNK3kgd1XXGSzg0CtOEiBxN-j39fZQQXuwBvqldnXs',
       },
     });
-    if (res.status === 200) {
-        console.log(`Requests com sucesso: ${res.status}`);
-      } else {
-        console.error(`Status code inesperado': ${res.status}`);
-      }
+    
+      check(res, {
+        "status was 200": (r) => r.status === 200,
+        
+      });
+    
+      sleep(1);
     }

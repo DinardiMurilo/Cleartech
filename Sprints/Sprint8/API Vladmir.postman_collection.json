@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "b5f02c68-a658-49af-9da3-bebbf1c8ba93",
 		"name": "API Vladmir",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23482990"
 	},
 	"item": [
@@ -16,16 +16,6 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Teste do Status code\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Teste do Tempo de resposta\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -42,7 +32,15 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "{{hostCat}}/categoria"
+						"url": {
+							"raw": "{{hostApiVlad}}/categoria",
+							"host": [
+								"{{hostApiVlad}}"
+							],
+							"path": [
+								"categoria"
+							]
+						}
 					},
 					"response": []
 				}
@@ -62,7 +60,14 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							""
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"var jsonObject = xml2Json(responseBody);"
 						]
 					}
 				}
@@ -84,20 +89,15 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 400,\", function () {\r",
 													"    pm.response.to.have.status(400);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
 													"});\r",
 													"\r",
-													"//teste da Mensagem de Erro\r",
-													"pm.test(\"teste da Mensagem de Erro\",() => {\r",
-													"  pm.expect(pm.response.text()).to.include(\"minimo de 3 caracteres não atingido\");\r",
-													"});"
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -108,14 +108,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"nome\": \"na\"\r\n}",
+											"raw": "{\r\n  \"nome\": \"aa\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/categoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/categoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -126,35 +134,13 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
-													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a(\"number\");});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo a subcategoria\r",
-													"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-													"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-													"});\r",
-													"\r",
 													"\r",
 													""
 												],
@@ -167,14 +153,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"nome\": \"wni\"\r\n}",
+											"raw": "{\r\n  \"nome\": \"aaa\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/categoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/categoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -185,36 +179,13 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
-													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a('number');});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo a subcategoria\r",
-													"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-													"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-													"});\r",
-													"\r",
-													"\r",
 													"\r",
 													""
 												],
@@ -227,14 +198,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"nome\": \"testedelimwnegcsracbstpqs\"\r\n}",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteress\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/categoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/categoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -245,34 +224,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"\r",
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-													"});\r",
-													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a(\"number\");});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo a subcategoria\r",
-													"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-													"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
 													""
@@ -286,14 +243,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"nome\": \"uestedelimitexoaracteretsssssqsitnsbspesssssssssss\"\r\n}",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssss\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Categoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -304,20 +269,15 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(400);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
-													"//teste da Mensagem de Erro\r",
-													"pm.test(\"teste da Mensagem de Erro\",() => {\r",
-													"  pm.expect(pm.response.text()).to.include(\"Tamanho maximo de 50 caracteres excedido\");\r",
-													"});"
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -328,14 +288,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteressssdsssssssssssssssssssssss\"\r\n}",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteressssssssssssssssssssssssssss\"\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Categoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								}
@@ -351,7 +319,7 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													""
+													" "
 												],
 												"type": "text/javascript"
 											}
@@ -369,7 +337,15 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Categoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -398,7 +374,15 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Categoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -427,7 +411,15 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Categoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -456,7 +448,15 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Categoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -485,7 +485,15 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Categoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								}
@@ -505,22 +513,12 @@
 									"script": {
 										"type": "text/javascript",
 										"exec": [
-											"",
-											"//teste do Status Code",
-											"pm.test(\"teste do Status Code\", function () {",
+											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"//teste do Tempo de Resposta",
-											"pm.test(\"teste do Tempo de Resposta\", function () {",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
-											"});",
-											"",
-											"//teste da Mensagem de Erro",
-											"const jsonData = pm.response.json();",
-											"",
-											"pm.test(\"teste da Mensagem de Erro\", () => {",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql('O campo nome deve conter apenas letras');",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
 											"});",
 											"",
 											""
@@ -536,23 +534,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
-											"//teste da Mensagem de Erro\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql('O Campo nome é obrigatorio');\r",
-											" \r",
-											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -571,7 +560,15 @@
 										}
 									}
 								},
-								"url": "{{hostCat}}/Categoria"
+								"url": {
+									"raw": "{{hostApiVlad}}/Categoria",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"Categoria"
+									]
+								}
 							},
 							"response": []
 						},
@@ -582,35 +579,13 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Status code is 201\", function () {\r",
 											"    pm.response.to.have.status(201);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
-											"\r",
 											""
 										],
 										"type": "text/javascript"
@@ -622,14 +597,22 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"Padaria de testssaaaeessssfess\"\r\n}",
+									"raw": "{\r\n  \"nome\": \"Padaria de teste\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/Categoria"
+								"url": {
+									"raw": "{{hostApiVlad}}/Categoria",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"Categoria"
+									]
+								}
 							},
 							"response": []
 						},
@@ -640,33 +623,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Status code is 201\", function () {\r",
 											"    pm.response.to.have.status(201);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
 											"\r",
@@ -681,14 +643,22 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"PaodsarsaibasaaafsS\"\r\n}",
+									"raw": "{\r\n  \"nome\": \"AAAA\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/Categoria"
+								"url": {
+									"raw": "{{hostApiVlad}}/Categoria",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"Categoria"
+									]
+								}
 							},
 							"response": []
 						},
@@ -699,78 +669,13 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
-											"\r",
-											"//teste da Mensagem de Erro\r",
-											"pm.test(\"Body contains string\",() => {\r",
-											"  pm.expect(pm.response.text()).to.include(\"A categoria ja existe\");\r",
-											"});\r",
-											" "
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"Konopelski\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/categoria"
-							},
-							"response": []
-						},
-						{
-							"name": "#Cadastro com sucesso",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(201);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
-											"\r",
 											"\r",
 											""
 										],
@@ -783,14 +688,72 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"{{$randomLastName}}\"\r\n}",
+									"raw": "{\r\n  \"nome\": \"testeApiVladEnviroment\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/categoria"
+								"url": {
+									"raw": "{{hostApiVlad}}/categoria",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"categoria"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "#Cadastro com sucesso",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"// pm.test(\"O Sucesso se prova com a data de crição\", function () {\r",
+											"//    pm.expect(pm.response.text()).to.include(\"nome\");\r",
+											"//  });\r",
+											"\r",
+											"\r",
+											"pm.responsepm.test true false pm.expect"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nome\": \"{{$randomFirstName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostApiVlad}}/categoria",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"categoria"
+									]
+								}
 							},
 							"response": []
 						}
@@ -809,23 +772,16 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 400\", function () {\r",
 													"    pm.response.to.have.status(400);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
 													"\r",
-													"//teste da Mensagem de Erro\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-													"  pm.expect(jsonData.errors.Nome[0]).to.eql('minimo de 3 caracteres não atingido');\r",
-													"});"
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -836,14 +792,23 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"Nome\": \"ur\",\r\n    \"Status\": true\r\n}",
+											"raw": "{\r\n    \"Nome\": \"aa\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/categoria/3"
+										"url": {
+											"raw": "{{hostApiVlad}}/categoria/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"categoria",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -854,34 +819,14 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
-													"    pm.response.to.have.status(204);\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a('number');});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo a subcategoria\r",
-													"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-													"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-													"});\r",
 													""
 												],
 												"type": "text/javascript"
@@ -893,14 +838,23 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"Nome\": \"crb\",\r\n    \"Status\": true\r\n}",
+											"raw": "{\r\n    \"Nome\": \"aaa\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/categoria/5"
+										"url": {
+											"raw": "{{hostApiVlad}}/categoria/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"categoria",
+												"2"
+											]
+										}
 									},
 									"response": []
 								},
@@ -911,33 +865,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
-													"    pm.response.to.have.status(204);\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-													"});\r",
-													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a('number');});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo a subcategoria\r",
-													"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-													"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
 													""
@@ -951,14 +884,23 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"Nome\": \"testedecarateressssssstes\",\r\n    \"Status\": true\r\n}",
+											"raw": "{\r\n    \"Nome\": \"TestedelimiteXcaracteress\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/categoria/4"
+										"url": {
+											"raw": "{{hostApiVlad}}/categoria/3",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"categoria",
+												"3"
+											]
+										}
 									},
 									"response": []
 								},
@@ -969,33 +911,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
-													"    pm.response.to.have.status(204);\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-													"});\r",
-													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a('number');});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo a subcategoria\r",
-													"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-													"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
 													""
@@ -1009,14 +930,23 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"Nome\": \"testedelpmiteccaracteressssssssssssssssssssassssss\",\r\n    \"Status\": true\r\n}",
+											"raw": "{\r\n    \"Nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssss\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria/4"
+										"url": {
+											"raw": "{{hostApiVlad}}/Categoria/4",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Categoria",
+												"4"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1027,22 +957,15 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 400\", function () {\r",
 													"    pm.response.to.have.status(400);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
-													"//teste da Mensagem de Erro\r",
-													"const jsonData = pm.response.json();\r",
 													"\r",
-													"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-													"  pm.expect(jsonData.errors.Nome[0]).to.eql('O campo nome excedeu a quantidade maxima de 50 caracteres');\r",
-													"});\r",
 													""
 												],
 												"type": "text/javascript"
@@ -1054,14 +977,23 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"Nome\": \"testedelimitexcaracteresssrosssssssssssssssssssssss\",\r\n    \"Status\": true\r\n}\r\n\r\n\r\n",
+											"raw": "{\r\n    \"Nome\": \"TestedelimiteXcaracteressssssssssssssssssssssssssss\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria/6"
+										"url": {
+											"raw": "{{hostApiVlad}}/Categoria/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Categoria",
+												"1"
+											]
+										}
 									},
 									"response": []
 								}
@@ -1095,7 +1027,16 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria/86"
+										"url": {
+											"raw": "{{servidor}}/Categoria/1",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1124,7 +1065,16 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/categoria/85"
+										"url": {
+											"raw": "{{servidor}}/categoria/1",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"categoria",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1153,7 +1103,16 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria/85"
+										"url": {
+											"raw": "{{servidor}}/Categoria/1",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1182,7 +1141,16 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria/85"
+										"url": {
+											"raw": "{{servidor}}/Categoria/1",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1211,7 +1179,16 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Categoria/85"
+										"url": {
+											"raw": "{{servidor}}/Categoria/1",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria",
+												"1"
+											]
+										}
 									},
 									"response": []
 								}
@@ -1231,23 +1208,14 @@
 									"script": {
 										"type": "text/javascript",
 										"exec": [
-											"",
-											"//teste do Status Code",
-											"pm.test(\"teste do Status Code\", function () {",
+											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"//teste do Tempo de Resposta",
-											"pm.test(\"teste do Tempo de Resposta\", function () {",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
 											"});",
 											"",
-											"//teste da Mensagem de Erro",
-											"const jsonData = pm.response.json();",
-											"",
-											"pm.test(\"teste da Mensagem de Erro\", () => {",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"o Campo nome deve conter apenas letras\");",
-											"});",
 											""
 										]
 									}
@@ -1261,35 +1229,13 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
-											"\r",
 											"\r",
 											""
 										],
@@ -1302,14 +1248,23 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"testa testa\",\r\n  \"status\": true\r\n}",
+									"raw": "{\r\n    \"Nome\": \"Padaria Nome composto\",\r\n    \"Status\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/categoria/2"
+								"url": {
+									"raw": "{{servidor}}/categoria/2",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"2"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1320,23 +1275,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
-											"\r",
-											"//teste da Mensagem de Erro\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"O campo nome é obrigatório\");\r",
-											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -1355,7 +1301,16 @@
 										}
 									}
 								},
-								"url": "{{hostCat}}/categoria/4"
+								"url": {
+									"raw": "{{servidor}}/categoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"1"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1366,33 +1321,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
 											""
@@ -1406,14 +1340,23 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"tstnomstat\",\r\n  \"status\": false\r\n}",
+									"raw": "{\r\n  \"nome\": \"AlteracaoDeNome\",\r\n  \"status\": false\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/categoria/9"
+								"url": {
+									"raw": "{{servidor}}/categoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"1"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1424,33 +1367,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
 											""
@@ -1464,14 +1386,23 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"Konopelski\",\r\n  \"status\": false\r\n}",
+									"raw": "{\r\n  \"nome\": \"Padaria\",\r\n  \"status\": false\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/categoria/5"
+								"url": {
+									"raw": "{{servidor}}/categoria/4",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"4"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1482,35 +1413,13 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
-											"\r",
 											"\r",
 											""
 										],
@@ -1523,14 +1432,23 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"{{$randomLastName}}\",\r\n  \"status\": true\r\n}",
+									"raw": "{\r\n  \"nome\": \"PadariaAtualizado\",\r\n  \"status\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/categoria/4"
+								"url": {
+									"raw": "{{servidor}}/categoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"1"
+									]
+								}
 							},
 							"response": []
 						},
@@ -1541,22 +1459,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
-											"//teste da Mensagem de Erro\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"A categoria ja existe\");\r",
-											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -1568,14 +1478,23 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"Joseph\",\r\n  \"status\": true\r\n}",
+									"raw": "{\r\n  \"nome\": \"PadariaAtualizado\",\r\n  \"status\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/categoria/4"
+								"url": {
+									"raw": "{{servidor}}/categoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"categoria",
+										"1"
+									]
+								}
 							},
 							"response": []
 						}
@@ -1599,20 +1518,14 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 400\", function () {\r",
 													"    pm.response.to.have.status(400);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
 													"});\r",
-													"\r",
-													"//teste da Mensagem de Erro\r",
-													"pm.test(\"teste da Mensagem de Erro\",() => {\r",
-													"  pm.expect(pm.response.text()).to.include(\"minimo de 3 caracteres não atingido\");\r",
-													"});"
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -1623,14 +1536,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"nome\": \"ve\",\r\n  \"categoriaId\": 4\r\n}",
+											"raw": "{\r\n  \"nome\": \"Te\",\r\n  \"categoriaId\": 1\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/subcategoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1641,33 +1562,13 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-													"});\r",
 													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a('number');});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo ao produto\r",
-													"pm.test(\"teste do vinculo ao produto\", () => {\r",
-													"  pm.expect(jsonData.produtos).to.be.null;\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													""
 												],
@@ -1680,14 +1581,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"nome\": \"mwe\",\r\n  \"categoriaId\": 3\r\n}\r\n\r\n",
+											"raw": "{\r\n  \"nome\": \"Tes\",\r\n  \"categoriaId\": 2\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/subcategoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1698,34 +1607,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-													"});\r",
-													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a('number');});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"\r",
-													"//teste do vinculo ao produto\r",
-													"pm.test(\"teste do vinculo ao produto\", () => {\r",
-													"  pm.expect(jsonData.produtos).to.be.null;\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
 													""
@@ -1739,14 +1626,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "\r\n{\r\n  \"nome\": \"cestedelimatexcabacstress\",\r\n  \"categoriaId\": 4\r\n}\r\n\r\n",
+											"raw": "{\r\n    \"Nome\": \"TestedelimiteXcaracteress\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/subcategoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1757,34 +1652,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"\r",
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 201\", function () {\r",
 													"    pm.response.to.have.status(201);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-													"});\r",
-													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a('number');});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo ao produto\r",
-													"pm.test(\"teste do vinculo ao produto\", () => {\r",
-													"  pm.expect(jsonData.produtos).to.be.null;\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
 													""
@@ -1798,14 +1671,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "\r\n{\r\n  \"nome\": \"festedelimirexcaaactgressssssssssqssssssssssssssss\",\r\n  \"categoriaId\": 5\r\n}\r\n",
+											"raw": "{\r\n  \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssss\"\r\n}\r\n\r\n{\r\n    \"Nome\": \"pera\",\r\n    \"Status\": false\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/subcategoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1816,20 +1697,15 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 400\", function () {\r",
 													"    pm.response.to.have.status(400);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
-													"//teste da Mensagem de Erro\r",
-													"pm.test(\"teste da Mensagem de Erro\",() => {\r",
-													"  pm.expect(pm.response.text()).to.include(\"voce excedeu a quantidade maxima de 50 caracteres\");\r",
-													"});"
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -1840,21 +1716,29 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "\r\n{\r\n  \"nome\": \"hestedelimitexcaractervssssssssssssssssssssssssssss\",\r\n  \"categoriaId\": 5\r\n}\r\n\r\n",
+											"raw": "{\r\n    \"Nome\": \"TestedelimiteXcaracteressssssssssssssssssssssssssss\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/subcategoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria"
+											]
+										}
 									},
 									"response": []
 								}
 							]
 						},
 						{
-							"name": "Insercao de numeros e caracteres especiais",
+							"name": "Insercao de numeros e caracteres especiais Copy",
 							"item": [
 								{
 									"name": "Numeros",
@@ -1874,14 +1758,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"nome\": \"123456\",\r\n  \"categoriaId\": 6\r\n}",
+											"raw": "{\r\n  \"nome\": \"123456\",\r\n  \"categoriaId\": 7\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/Subcategoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Subcategoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1903,14 +1795,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"nome\": \"AbcD456\",\r\n  \"categoriaId\": 7\r\n}",
+											"raw": "{\r\n  \"nome\": \"AbcD456\",\r\n  \"categoriaId\":7\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/Subcategoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Subcategoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1928,7 +1828,15 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Subcategoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Subcategoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1946,7 +1854,15 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Subcategoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Subcategoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -1957,14 +1873,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"nome\": \"abc123!@#\",\r\n  \"categoriaId\": 5\r\n}",
+											"raw": "{\r\n  \"nome\": \"abc123!@#\",\r\n  \"categoriaId\": 7\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/Subcategoria"
+										"url": {
+											"raw": "{{hostApiVlad}}/Subcategoria",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"Subcategoria"
+											]
+										}
 									},
 									"response": []
 								}
@@ -1984,24 +1908,15 @@
 									"script": {
 										"type": "text/javascript",
 										"exec": [
-											"",
-											"//teste do Status Code",
-											"pm.test(\"teste do Status Code\", function () {",
+											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"//teste do Tempo de Resposta",
-											"pm.test(\"teste do Tempo de Resposta\", function () {",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
 											"});",
 											"",
-											"//teste da Mensagem de Erro",
-											"const jsonData = pm.response.json();",
 											"",
-											"pm.test(\"teste da Mensagem de Erro\", () => {",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"O campo nome deve conter apenas letras\");",
-											" ",
-											"});",
 											""
 										]
 									}
@@ -2015,23 +1930,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
-											"//teste da Mensagem de Erro\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"O campo nome é obrigatório\");\r",
-											" \r",
-											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -2043,14 +1949,22 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\":\" \",\r\n  \"categoriaId\": 6\r\n}",
+									"raw": "{\r\n  \"nome\": \"\",\r\n  \"categoriaId\": 3\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/Subcategoria"
+								"url": {
+									"raw": "{{hostApiVlad}}/Subcategoria",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2061,36 +1975,13 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Status code is 201\", function () {\r",
 											"    pm.response.to.have.status(201);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo ao produto\r",
-											"pm.test(\"teste do vinculo ao produto\", () => {\r",
-											"  pm.expect(jsonData.produtos).to.be.null;\r",
-											"});\r",
-											"\r",
-											"\r",
 											""
 										],
 										"type": "text/javascript"
@@ -2102,44 +1993,40 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"{{$randomFullName}}\",\r\n  \"categoriaId\": 5\r\n}",
+									"raw": "{\r\n  \"nome\": \"SubCategoria Swagger\",\r\n  \"categoriaId\": 2\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/subcategoria"
+								"url": {
+									"raw": "{{hostApiVlad}}/subcategoria",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"subcategoria"
+									]
+								}
 							},
 							"response": []
 						},
 						{
-							"name": "#Cadastro de subcategoria em Categoria Inativa",
+							"name": "#Cadastro de Subcategoria em Categoria Inativa",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
-											"\r",
-											"\r",
-											"//teste da Mensagem de Erro\r",
-											"pm.test(\"teste da Mensagem de Erro\",() => {\r",
-											"  pm.expect(pm.response.text()).to.include(\"Não é possivel cadastrar uma subcategoria em uma categoria inativa\");\r",
-											"});\r",
-											" \r",
-											"pm.test(\"teste da Mensagem de Erro\",() => {\r",
-											"  pm.expect(pm.response.text()).to.include(\"Por favor insira uma categoria valida\");\r",
-											"});\r",
-											" "
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -2150,14 +2037,22 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"paggodocedeteate\",\r\n  \"categoriaId\": 7\r\n}",
+									"raw": "{\r\n  \"nome\": \"PaoDoceDeTeste\",\r\n  \"categoriaId\": 3\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/Subcategoria"
+								"url": {
+									"raw": "{{hostApiVlad}}/Subcategoria",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2168,35 +2063,13 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Status code is 201\", function () {\r",
 											"    pm.response.to.have.status(201);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo ao produto\r",
-											"pm.test(\"teste do vinculo ao produto\", () => {\r",
-											"  pm.expect(jsonData.produtos).to.be.null;\r",
-											"});\r",
-											"\r",
 											"\r",
 											""
 										],
@@ -2209,14 +2082,22 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"{{$randomFirstName}}\",\r\n  \"categoriaId\": 6\r\n}",
+									"raw": "{\r\n  \"nome\": \"{{$randomFirstName}}\",\r\n  \"categoriaId\": 1\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/Subcategoria"
+								"url": {
+									"raw": "{{hostApiVlad}}/Subcategoria",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2227,20 +2108,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Status code is 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
-											"//teste da Mensagem de Erro\r",
-											"pm.test(\"Body contains string\",() => {\r",
-											"  pm.expect(pm.response.text()).to.include(\"Não é possivel cadastrar duas subCategorias com o mesmo nome\");\r",
-											"});\r",
 											" "
 										],
 										"type": "text/javascript"
@@ -2252,14 +2127,22 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"PaoDoceDeTeste\",\r\n  \"categoriaId\": 4\r\n}",
+									"raw": "{\r\n  \"nome\": \"PaoDoceDeTeste\",\r\n  \"categoriaId\": 1\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/Subcategoria"
+								"url": {
+									"raw": "{{hostApiVlad}}/Subcategoria",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
 							},
 							"response": []
 						}
@@ -2278,20 +2161,15 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"Status code is 400\", function () {\r",
 													"    pm.response.to.have.status(400);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-													"});\r",
 													"\r",
-													"//teste da Mensagem de Erro\r",
-													"pm.test(\"teste da Mensagem de Erro\",() => {\r",
-													"  pm.expect(pm.response.text()).to.include(\"minimo de 3 caracteres não atingido\");\r",
-													"});"
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});\r",
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -2302,14 +2180,23 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"Nome\": \"bc\",\r\n    \"Status\": true\r\n}",
+											"raw": "{\r\n    \"Nome\": \"aa\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/subcategoria/3"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria",
+												"2"
+											]
+										}
 									},
 									"response": []
 								},
@@ -2320,34 +2207,16 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
-													"    pm.response.to.have.status(204);\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
-													"const jsonData = pm.response.json();\r",
 													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a('number');});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo ao produto\r",
-													"pm.test(\"teste do vinculo ao produto\", () => {\r",
-													"  pm.expect(jsonData.produtos).to.be.null;\r",
-													"});"
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -2358,14 +2227,23 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"Nome\": \"ban\",\r\n    \"Status\": true\r\n}0",
+											"raw": "{\r\n    \"Nome\": \"aaa\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/subcategoria/4"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria",
+												"2"
+											]
+										}
 									},
 									"response": []
 								},
@@ -2376,34 +2254,16 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
-													"    pm.response.to.have.status(204);\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a('number');});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo ao produto\r",
-													"pm.test(\"teste do vinculo ao produto\", () => {\r",
-													"  pm.expect(jsonData.produtos).to.be.null;\r",
-													"});"
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -2414,14 +2274,23 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"Nome\": \"vesqedelimitexaarabvnress\",\r\n    \"Status\": true\r\n}",
+											"raw": "{\r\n    \"Nome\": \"TestedelimiteXcaracteress\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/subcategoria/4"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria",
+												"2"
+											]
+										}
 									},
 									"response": []
 								},
@@ -2432,34 +2301,15 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
-													"    pm.response.to.have.status(204);\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
-													"const jsonData = pm.response.json();\r",
-													"\r",
-													"//teste do ID\r",
-													"pm.test(\"teste do ID\", () => {\r",
-													"  pm.expect(jsonData.id).to.be.a('number');});\r",
-													"\r",
-													"//teste do nome \r",
-													"pm.test(\"teste do nome\", () => {\r",
-													"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-													"\r",
-													"//teste do status\r",
-													"pm.test(\"teste do status\", () => {\r",
-													"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-													"\r",
-													"//teste do vinculo ao produto\r",
-													"pm.test(\"teste do vinculo ao produto\", () => {\r",
-													"  pm.expect(jsonData.produtos).to.be.null;\r",
-													"});"
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -2470,14 +2320,23 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"Nome\": \"testedelbmitexcaaacteresssssssssssbsssjssssssjssms\",\r\n    \"Status\": true\r\n}",
+											"raw": "{\r\n    \"Nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssss\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/subcategoria/3"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria",
+												"2"
+											]
+										}
 									},
 									"response": []
 								},
@@ -2488,20 +2347,15 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"//teste do Status Code\r",
-													"pm.test(\"teste do Status Code\", function () {\r",
+													"pm.test(\"O Status deve ser 400\", function () {\r",
 													"    pm.response.to.have.status(400);\r",
 													"});\r",
 													"\r",
-													"//teste do Tempo de Resposta\r",
-													"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-													"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 													"});\r",
 													"\r",
-													"//teste da Mensagem de Erro\r",
-													"pm.test(\"teste da Mensagem de Erro\",() => {\r",
-													"  pm.expect(pm.response.text()).to.include(\"voce excedeu a quantidade maxima de 50 caracteres\");\r",
-													"});"
+													""
 												],
 												"type": "text/javascript"
 											}
@@ -2512,14 +2366,23 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"Nome\": \"testedelimitexcaracteressssgsssssssssssssssssjssmsr\",\r\n    \"Status\": true\r\n}",
+											"raw": "{\r\n    \"Nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssss\",\r\n    \"Status\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostCat}}/subcategoria/2"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria",
+												"2"
+											]
+										}
 									},
 									"response": []
 								}
@@ -2542,7 +2405,16 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Subcategoria/1"
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
 									},
 									"response": []
 								},
@@ -2560,7 +2432,16 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Subcategoria/1"
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
 									},
 									"response": []
 								},
@@ -2578,7 +2459,16 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Subcategoria/1"
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
 									},
 									"response": []
 								},
@@ -2596,7 +2486,16 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Subcategoria/1"
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
 									},
 									"response": []
 								},
@@ -2614,7 +2513,16 @@
 												}
 											}
 										},
-										"url": "{{hostCat}}/Subcategoria/1"
+										"url": {
+											"raw": "{{servidor}}/Subcategoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Subcategoria",
+												"4"
+											]
+										}
 									},
 									"response": []
 								}
@@ -2634,23 +2542,14 @@
 									"script": {
 										"type": "text/javascript",
 										"exec": [
-											"",
-											"//teste do Status Code",
-											"pm.test(\"teste do Status Code\", function () {",
+											"pm.test(\"Status code is 400\", function () {",
 											"    pm.response.to.have.status(400);",
 											"});",
 											"",
-											"//teste do Tempo de Resposta",
-											"pm.test(\"teste do Tempo de Resposta\", function () {",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+											"pm.test(\"Response time is less than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);",
 											"});",
 											"",
-											"//teste da Mensagem de Erro",
-											"const jsonData = pm.response.json();",
-											"",
-											"pm.test(\"teste da Mensagem de Erro\", () => {",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"o Campo nome deve conter apenas letras\");",
-											"});",
 											""
 										]
 									}
@@ -2664,23 +2563,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"O Status deve ser 400\", function () {\r",
 											"    pm.response.to.have.status(400);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"\r",
-											"//teste da Mensagem de Erro\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"O campo nome é obrigatório\");\r",
-											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -2699,7 +2589,16 @@
 										}
 									}
 								},
-								"url": "{{hostCat}}/Subcategoria/1"
+								"url": {
+									"raw": "{{servidor}}/Subcategoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria",
+										"1"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2710,34 +2609,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"O Status deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -2749,14 +2628,23 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"padaria aaaaatualizado\",\r\n  \"status\": true\r\n}",
+									"raw": "{\r\n  \"nome\": \"Padaria Atualizado\",\r\n  \"status\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/subcategoria/3"
+								"url": {
+									"raw": "{{servidor}}/subcategoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"subcategoria",
+										"1"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2767,34 +2655,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"O Status deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -2806,14 +2674,23 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"alteracaodestatus\",\r\n  \"status\": false\r\n}",
+									"raw": "{\r\n  \"nome\": \"PadariaDeTestes\",\r\n  \"status\": false\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/subcategoria/4"
+								"url": {
+									"raw": "{{servidor}}/subcategoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"subcategoria",
+										"1"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2824,34 +2701,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+											"pm.test(\"O Status deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
 											""
 										],
 										"type": "text/javascript"
@@ -2863,14 +2720,23 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"{{$randomLastName}}\",\r\n\"status\": true\r\n}",
+									"raw": "{\r\n  \"nome\": \"PadariaDeTestesEditadoComSucesso\",\r\n\"status\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/Subcategoria/3"
+								"url": {
+									"raw": "{{servidor}}/Subcategoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria",
+										"1"
+									]
+								}
 							},
 							"response": []
 						},
@@ -2881,33 +2747,12 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 											"});\r",
 											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
+											"pm.test(\"O Status deve ser 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
 											""
@@ -2921,14 +2766,23 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"PadariaDeTesffeasEasditadoLetraVVV\",\r\n\"status\": true\r\n}",
+									"raw": "{\r\n  \"nome\": \"PadariaDeTestesEditadoLetraM\",\r\n\"status\": true\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostCat}}/subcategoria/4"
+								"url": {
+									"raw": "{{servidor}}/subcategoria/1",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"subcategoria",
+										"1"
+									]
+								}
 							},
 							"response": []
 						}
@@ -2940,269 +2794,6 @@
 			"name": "Centro de distribuição",
 			"item": [
 				{
-					"name": "Teste de limites Centro de Distribuicao",
-					"item": [
-						{
-							"name": "2 caracteres",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-											"});\r",
-											"\r",
-											"//teste da Mensagem de Erro\r",
-											"pm.test(\"teste da Mensagem de Erro\",() => {\r",
-											"  pm.expect(pm.response.text()).to.include(\"minimo de 3 caracteres não atingido\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Nome\":\"fn\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostApiVlad}}/centro"
-							},
-							"response": []
-						},
-						{
-							"name": "3 caracteres",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(201);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Nome\":\"aya\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostApiVlad}}/centro"
-							},
-							"response": []
-						},
-						{
-							"name": "25 caracteres",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(201);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
-											"\r",
-											"\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "\r\n\r\n{\r\n    \"Nome\":\"testedelimitexcaraatebesh\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostApiVlad}}/centro"
-							},
-							"response": []
-						},
-						{
-							"name": "50 caracteres",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"\r",
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(201);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
-											"\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "\r\n\r\n{\r\n    \"Nome\":\"testedelimitebcaracteressssssssssssssssssssssjssms\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostApiVlad}}/centro"
-							},
-							"response": []
-						},
-						{
-							"name": "51 caracteres",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-											"});\r",
-											"\r",
-											"//teste da Mensagem de Erro\r",
-											"pm.test(\"teste da Mensagem de Erro\",() => {\r",
-											"  pm.expect(pm.response.text()).to.include(\"voce excedeu a quantidade maxima de 50 caracteres\");\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "\r\n{\r\n    \"Nome\":\"testedelimitexcaractereysssssssssssssssssssssjssms\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostApiVlad}}/centro"
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "Insercao de letras + numeros + caracteres especiais",
 					"item": [
 						{
@@ -3212,7 +2803,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											""
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"var jsonObject = xml2Json(responseBody);"
 										],
 										"type": "text/javascript"
 									}
@@ -3223,14 +2821,22 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Nome\":\"C3ntr0 de distribuic4o\",\r\n    \"CEP\":\"03835055\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
+									"raw": "{\r\n    \"Nome\":\"C3ntro de distribuic4o\",\r\n    \"CEP\":\"03835055\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/centro"
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
 							},
 							"response": []
 						},
@@ -3241,7 +2847,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											""
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"var jsonObject = xml2Json(responseBody);"
 										],
 										"type": "text/javascript"
 									}
@@ -3259,7 +2872,15 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/centro"
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
 							},
 							"response": []
 						},
@@ -3270,7 +2891,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											""
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"var jsonObject = xml2Json(responseBody);"
 										],
 										"type": "text/javascript"
 									}
@@ -3288,7 +2916,15 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/centro"
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
 							},
 							"response": []
 						},
@@ -3299,7 +2935,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											""
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"var jsonObject = xml2Json(responseBody);"
 										],
 										"type": "text/javascript"
 									}
@@ -3317,7 +2960,15 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/centro"
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
 							},
 							"response": []
 						},
@@ -3328,7 +2979,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											""
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"var jsonObject = xml2Json(responseBody);"
 										],
 										"type": "text/javascript"
 									}
@@ -3346,7 +3004,15 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/centro"
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
 							},
 							"response": []
 						},
@@ -3357,7 +3023,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											""
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											"var jsonObject = xml2Json(responseBody);"
 										],
 										"type": "text/javascript"
 									}
@@ -3375,7 +3048,15 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/centro"
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
 							},
 							"response": []
 						}
@@ -3395,26 +3076,246 @@
 							"script": {
 								"type": "text/javascript",
 								"exec": [
-									"//teste do Status Code",
-									"pm.test(\"teste do Status Code\", function () {",
+									"pm.test(\"Status code is 400\", function () {",
 									"    pm.response.to.have.status(400);",
 									"});",
 									"",
-									"//teste do Tempo de Resposta",
-									"pm.test(\"teste do Tempo de Resposta\", function () {",
+									"pm.test(\"Response time is less than 200ms\", function () {",
 									"    pm.expect(pm.response.responseTime).to.be.below(200);",
-									"});",
-									"",
-									"//teste da Mensagem de Erro",
-									"const jsonData = pm.response.json();",
-									"",
-									"pm.test(\"teste da Mensagem de Erro\", () => {",
-									"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"O campo nome deve conter apenas letras);",
-									" ",
 									"});",
 									""
 								]
 							}
+						}
+					]
+				},
+				{
+					"name": "Teste de limites Centro de Distribuicao",
+					"item": [
+						{
+							"name": "2 caracteres",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Nome\":\"XX\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3 caracteres",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Nome\":\"XXX\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "25 caracteres",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n\r\n{\r\n    \"Nome\":\"TestedelimiteXcaracteress\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "50 caracteres",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n\r\n{\r\n    \"Nome\":\"TestedelimiteXcaracteresssssssssssssssssssssssssss\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "51 caracteres",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n    \"Nome\":\"TestedelimiteXcaracteressssssssssssssssssssssssssss\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{hostApiVlad}}/centro",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"centro"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -3425,31 +3326,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"//teste do Status Code\r",
-									"pm.test(\"teste do Status Code\", function () {\r",
+									"pm.test(\"Status code is 201\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"//teste do Tempo de Resposta\r",
-									"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 									"});\r",
 									"\r",
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"//teste do ID\r",
-									"pm.test(\"teste do ID\", () => {\r",
-									"  pm.expect(jsonData.id).to.be.a('number');});\r",
-									"\r",
-									"//teste do nome \r",
-									"pm.test(\"teste do nome\", () => {\r",
-									"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-									"\r",
-									"//teste do status\r",
-									"pm.test(\"teste do status\", () => {\r",
-									"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-									"\r",
-									" \r",
 									""
 								],
 								"type": "text/javascript"
@@ -3461,14 +3345,22 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"{{$randomFirstName}}\",\r\n  \"cep\": \"02679010\",\r\n  \"numero\": {{$randomInt}},\r\n  \"complemento\": \"dessavezvai\"\r\n}",
+							"raw": "{\r\n  \"nome\": \"{{$randomFirstName}}\",\r\n  \"cep\": \"02679010\",\r\n  \"numero\": {{$randomInt}},\r\n  \"complemento\": \"tstatudoooo\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{hostCat}}/centro"
+						"url": {
+							"raw": "{{hostApiVlad}}/centro",
+							"host": [
+								"{{hostApiVlad}}"
+							],
+							"path": [
+								"centro"
+							]
+						}
 					},
 					"response": []
 				},
@@ -3479,21 +3371,15 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"//teste do Status Code\r",
-									"pm.test(\"teste do Status Code\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"//teste do Tempo de Resposta\r",
-									"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
 									"});\r",
-									"\r",
-									"//teste da Mensagem de Erro\r",
-									"pm.test(\"Body contains string\",() => {\r",
-									"  pm.expect(pm.response.text()).to.include(\"Esse nome de centro de distribuição já existe\");\r",
-									"});\r",
-									" "
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -3504,14 +3390,22 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Nome\":\"Stefanie\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
+							"raw": "{\r\n    \"Nome\":\"{{$randomLastName}}\",\r\n    \"CEP\":\"03835045\",\r\n    \"Numero\":{{$randomInt}},\r\n     \"Complemento\":\"Proximo ao paraiso vejetal\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "{{hostApiVlad}}/centro"
+						"url": {
+							"raw": "{{hostApiVlad}}/centro",
+							"host": [
+								"{{hostApiVlad}}"
+							],
+							"path": [
+								"centro"
+							]
+						}
 					},
 					"response": []
 				},
@@ -3522,24 +3416,13 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"//teste do Status Code\r",
-									"pm.test(\"teste do Status Code\", function () {\r",
+									"pm.test(\"Status code is 400\", function () {\r",
 									"    pm.response.to.have.status(400);\r",
 									"});\r",
 									"\r",
-									"//teste do Tempo de Resposta\r",
-									"pm.test(\"teste do Tempo de Resposta\", function () {\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
 									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
-									"});\r",
-									"\r",
-									"//teste da Mensagem de Erro\r",
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-									"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"O campo nome é obrigatório\");\r",
-									" \r",
-									"});\r",
-									""
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -3557,7 +3440,15 @@
 								}
 							}
 						},
-						"url": "{{hostApiVlad}}/centro"
+						"url": {
+							"raw": "{{hostApiVlad}}/centro",
+							"host": [
+								"{{hostApiVlad}}"
+							],
+							"path": [
+								"centro"
+							]
+						}
 					},
 					"response": []
 				},
@@ -3566,7 +3457,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{hostApiVlad}}/centro/1"
+						"url": {
+							"raw": "{{hostApiVlad}}/centro/1",
+							"host": [
+								"{{hostApiVlad}}"
+							],
+							"path": [
+								"centro",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
@@ -3605,14 +3505,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n     \"nome\": \"Tr\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":1\r\n}",
+											"raw": "{\r\n     \"nome\": \"Tr\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{servidor}}/Produto"
+										"url": {
+											"raw": "{{servidor}}/Produto",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -3640,14 +3548,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n     \"nome\": \"Tda\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":1\r\n}",
+											"raw": "{\r\n     \"nome\": \"Tra\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{servidor}}/Produto"
+										"url": {
+											"raw": "{{servidor}}/Produto",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -3675,14 +3591,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n     \"nome\": \"TestedelimiteXcaracteresssssassssssssssssssssssssssssssssssscsss\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":1\r\n}\r\n",
+											"raw": "{\r\n     \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssssssssssssssssss\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}\r\n",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{servidor}}/produto"
+										"url": {
+											"raw": "{{servidor}}/produto",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -3710,14 +3634,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n     \"nome\": \"TestedelimiteXcaractereassssssssasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}\r\n",
+											"raw": "{\r\n     \"nome\": \"TestedelimiteXcaracteresssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}\r\n",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{servidor}}/produto"
+										"url": {
+											"raw": "{{servidor}}/produto",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -3752,7 +3684,15 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/produto"
+										"url": {
+											"raw": "{{servidor}}/produto",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								}
@@ -3792,7 +3732,15 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/Produto"
+										"url": {
+											"raw": "{{servidor}}/Produto",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -3820,14 +3768,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n     \"nome\": \"Trakinas\",\r\n        \"descricao\": \"avr\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}\r\n",
+											"raw": "{\r\n     \"nome\": \"Trakinas\",\r\n        \"descricao\": \"per\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}\r\n",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{servidor}}/Produto"
+										"url": {
+											"raw": "{{servidor}}/Produto",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -3855,14 +3811,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "\r\n     \"nome\": \"Trakinas\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde testeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeaaaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeaeeeeeeeeeeee\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}",
+											"raw": "\r\n     \"nome\": \"Trakinas\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde testeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{servidor}}/Produto"
+										"url": {
+											"raw": "{{servidor}}/Produto",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -3890,14 +3854,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n     \"nome\": \"Trakinas\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde testeeeeeeeeeeeeeeaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeaeperfeito para preparar lanchinho fim de tarde testeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}\r\n",
+											"raw": "{\r\n     \"nome\": \"Trakinas\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde testeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeperfeito para preparar lanchinho fim de tarde testeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 100,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}\r\n",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{servidor}}/Produto"
+										"url": {
+											"raw": "{{servidor}}/Produto",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -3932,7 +3904,15 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/Produto"
+										"url": {
+											"raw": "{{servidor}}/Produto",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Produto"
+											]
+										}
 									},
 									"response": []
 								}
@@ -3955,7 +3935,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -3973,7 +3961,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -3991,7 +3987,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4009,7 +4013,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4027,7 +4039,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4045,7 +4065,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4063,7 +4091,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4081,7 +4117,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4099,7 +4143,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								}
@@ -4158,14 +4210,22 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n     \"nome\": \"Trakinas\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": {{$randomInt}},\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}",
+											"raw": "{\r\n     \"nome\": \"Trakinas\",\r\n        \"descricao\": \"perfeito para preparar lanchinho fim de tarde\",\r\n        \"peso\": 0,\r\n        \"altura\": 0,\r\n        \"largura\": 0,\r\n        \"comprimento\": 0,\r\n        \"valor\": 2.50,\r\n        \"quantidadeEmEstoque\": 10,\r\n        \"subCategoriaId\":2,\r\n        \"CentroDeDistribuicaoId\":2\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4201,7 +4261,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4237,7 +4305,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4273,7 +4349,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4309,7 +4393,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								}
@@ -4343,7 +4435,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4372,7 +4472,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4401,7 +4509,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4430,7 +4546,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4459,7 +4583,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4488,7 +4620,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								}
@@ -4549,7 +4689,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4578,7 +4726,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4607,7 +4763,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4636,7 +4800,15 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto"
+											]
+										}
 									},
 									"response": []
 								}
@@ -4702,7 +4874,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/categoria/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/categoria/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"categoria",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4737,7 +4918,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/subcategoria/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/subcategoria/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"subcategoria",
+												"1"
+											]
+										}
 									},
 									"response": []
 								}
@@ -4774,7 +4964,15 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/produto"
+								"url": {
+									"raw": "{{hostApiVlad}}/produto",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"produto"
+									]
+								}
 							},
 							"response": []
 						},
@@ -4809,7 +5007,15 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/produto"
+								"url": {
+									"raw": "{{hostApiVlad}}/produto",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"produto"
+									]
+								}
 							},
 							"response": []
 						},
@@ -4844,7 +5050,15 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/produto"
+								"url": {
+									"raw": "{{hostApiVlad}}/produto",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"produto"
+									]
+								}
 							},
 							"response": []
 						},
@@ -4879,7 +5093,15 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/produto"
+								"url": {
+									"raw": "{{hostApiVlad}}/produto",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"produto"
+									]
+								}
 							},
 							"response": []
 						}
@@ -4922,7 +5144,16 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/Produto/1"
+										"url": {
+											"raw": "{{servidor}}/Produto/1",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4933,8 +5164,8 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"pm.test(\"Status code is 204\", function () {\r",
-													"    pm.response.to.have.status(204);\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
 													"});\r",
 													"\r",
 													"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -4957,7 +5188,16 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/Produto/1"
+										"url": {
+											"raw": "{{servidor}}/Produto/1",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -4968,8 +5208,8 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"pm.test(\"Status code is 204\", function () {\r",
-													"    pm.response.to.have.status(204);\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
 													"});\r",
 													"\r",
 													"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -4992,7 +5232,16 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/produto/1"
+										"url": {
+											"raw": "{{servidor}}/produto/1",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5003,8 +5252,8 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													"pm.test(\"Status code is 204\", function () {\r",
-													"    pm.response.to.have.status(204);\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
 													"});\r",
 													"\r",
 													"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -5027,7 +5276,16 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/produto/1"
+										"url": {
+											"raw": "{{servidor}}/produto/1",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5062,7 +5320,16 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/produto/1"
+										"url": {
+											"raw": "{{servidor}}/produto/1",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								}
@@ -5085,7 +5352,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5103,7 +5379,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5121,7 +5406,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5139,7 +5433,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5157,7 +5460,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5175,7 +5487,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5193,7 +5514,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5211,7 +5541,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5229,7 +5568,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/1"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/1",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"1"
+											]
+										}
 									},
 									"response": []
 								}
@@ -5271,7 +5619,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													""
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -5289,7 +5642,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/2"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"2"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5300,7 +5662,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													""
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -5318,7 +5685,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/2"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"2"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5329,7 +5705,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													""
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -5347,7 +5728,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/2"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"2"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5358,7 +5748,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													""
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -5376,7 +5771,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/2"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"2"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5387,7 +5791,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													""
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -5405,7 +5814,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/2"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"2"
+											]
+										}
 									},
 									"response": []
 								},
@@ -5416,7 +5834,12 @@
 											"listen": "test",
 											"script": {
 												"exec": [
-													""
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"pm.test(\"Response time is less than 200ms\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+													"});"
 												],
 												"type": "text/javascript"
 											}
@@ -5434,7 +5857,16 @@
 												}
 											}
 										},
-										"url": "{{hostApiVlad}}/produto/2"
+										"url": {
+											"raw": "{{hostApiVlad}}/produto/2",
+											"host": [
+												"{{hostApiVlad}}"
+											],
+											"path": [
+												"produto",
+												"2"
+											]
+										}
 									},
 									"response": []
 								}
@@ -5473,8 +5905,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 204\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -5497,7 +5929,16 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/produto/2"
+								"url": {
+									"raw": "{{hostApiVlad}}/produto/2",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"produto",
+										"2"
+									]
+								}
 							},
 							"response": []
 						},
@@ -5508,8 +5949,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 204\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -5532,7 +5973,16 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/produto/2"
+								"url": {
+									"raw": "{{hostApiVlad}}/produto/2",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"produto",
+										"2"
+									]
+								}
 							},
 							"response": []
 						},
@@ -5543,8 +5993,8 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 204\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Response time is less than 200ms\", function () {\r",
@@ -5567,7 +6017,16 @@
 										}
 									}
 								},
-								"url": "{{hostApiVlad}}/produto/1"
+								"url": {
+									"raw": "{{hostApiVlad}}/produto/1",
+									"host": [
+										"{{hostApiVlad}}"
+									],
+									"path": [
+										"produto",
+										"1"
+									]
+								}
 							},
 							"response": []
 						}
@@ -5576,791 +6035,6 @@
 				{
 					"name": "Pesquisar Produto",
 					"item": []
-				}
-			]
-		},
-		{
-			"name": "Editar Categoria",
-			"item": [
-				{
-					"name": "Teste de Limites",
-					"item": [
-						{
-							"name": "2 caracteres",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"\r",
-											"//teste da Mensagem de Erro\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql('minimo de 3 caracteres não atingido');\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Nome\": \"ur\",\r\n    \"Status\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/categoria/3"
-							},
-							"response": []
-						},
-						{
-							"name": "3 caracteres",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Nome\": \"crb\",\r\n    \"Status\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/categoria/5"
-							},
-							"response": []
-						},
-						{
-							"name": "25 caracteres",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
-											"\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Nome\": \"testedecarateressssssstes\",\r\n    \"Status\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/categoria/4"
-							},
-							"response": []
-						},
-						{
-							"name": "50 caracteres",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(204);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"//teste do ID\r",
-											"pm.test(\"teste do ID\", () => {\r",
-											"  pm.expect(jsonData.id).to.be.a('number');});\r",
-											"\r",
-											"//teste do nome \r",
-											"pm.test(\"teste do nome\", () => {\r",
-											"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-											"\r",
-											"//teste do status\r",
-											"pm.test(\"teste do status\", () => {\r",
-											"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-											"\r",
-											"//teste do vinculo a subcategoria\r",
-											"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-											"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-											"});\r",
-											"\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Nome\": \"testedelpmiteccaracteressssssssssssssssssssassssss\",\r\n    \"Status\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/Categoria/4"
-							},
-							"response": []
-						},
-						{
-							"name": "51 caracteres",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"//teste do Status Code\r",
-											"pm.test(\"teste do Status Code\", function () {\r",
-											"    pm.response.to.have.status(400);\r",
-											"});\r",
-											"\r",
-											"//teste do Tempo de Resposta\r",
-											"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-											"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-											"});\r",
-											"\r",
-											"//teste da Mensagem de Erro\r",
-											"const jsonData = pm.response.json();\r",
-											"\r",
-											"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-											"  pm.expect(jsonData.errors.Nome[0]).to.eql('O campo nome excedeu a quantidade maxima de 50 caracteres');\r",
-											"});\r",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"Nome\": \"testedelimitexcaracteresssrosssssssssssssssssssssss\",\r\n    \"Status\": true\r\n}\r\n\r\n\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/Categoria/6"
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Alteração com numeros e caracteres especiais",
-					"item": [
-						{
-							"name": "Numeros",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"23456\",\r\n  \"status\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/Categoria/86"
-							},
-							"response": []
-						},
-						{
-							"name": "letras + numeros",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"Zer0\",\r\n  \"status\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/categoria/85"
-							},
-							"response": []
-						},
-						{
-							"name": "Numeros + caracteres especiais",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"234!@#\",\r\n  \"status\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/Categoria/85"
-							},
-							"response": []
-						},
-						{
-							"name": "letras + caracteres especiais",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"34$!\",\r\n  \"status\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/Categoria/85"
-							},
-							"response": []
-						},
-						{
-							"name": "letras + numeros + caracteres especiais",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"nome\": \"abc234!@#\",\r\n  \"status\": true\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{hostCat}}/Categoria/85"
-							},
-							"response": []
-						}
-					],
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"",
-									"//teste do Status Code",
-									"pm.test(\"teste do Status Code\", function () {",
-									"    pm.response.to.have.status(400);",
-									"});",
-									"",
-									"//teste do Tempo de Resposta",
-									"pm.test(\"teste do Tempo de Resposta\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
-									"});",
-									"",
-									"//teste da Mensagem de Erro",
-									"const jsonData = pm.response.json();",
-									"",
-									"pm.test(\"teste da Mensagem de Erro\", () => {",
-									"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"o Campo nome deve conter apenas letras\");",
-									"});",
-									""
-								]
-							}
-						}
-					]
-				},
-				{
-					"name": "#Edição utilizando nome composto/espaço no nome",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"//teste do Status Code\r",
-									"pm.test(\"teste do Status Code\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
-									"});\r",
-									"\r",
-									"//teste do Tempo de Resposta\r",
-									"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-									"});\r",
-									"\r",
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"//teste do ID\r",
-									"pm.test(\"teste do ID\", () => {\r",
-									"  pm.expect(jsonData.id).to.be.a('number');});\r",
-									"\r",
-									"//teste do nome \r",
-									"pm.test(\"teste do nome\", () => {\r",
-									"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-									"\r",
-									"//teste do status\r",
-									"pm.test(\"teste do status\", () => {\r",
-									"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-									"\r",
-									"//teste do vinculo a subcategoria\r",
-									"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-									"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-									"});\r",
-									"\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"testa testa\",\r\n  \"status\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{hostCat}}/categoria/2"
-					},
-					"response": []
-				},
-				{
-					"name": "#Edicao em branco",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"//teste do Status Code\r",
-									"pm.test(\"teste do Status Code\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"//teste do Tempo de Resposta\r",
-									"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"//teste da Mensagem de Erro\r",
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-									"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"O campo nome é obrigatório\");\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"Nome\": \" \",\r\n    \"Status\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{hostCat}}/categoria/4"
-					},
-					"response": []
-				},
-				{
-					"name": "#Edicao de nome e status",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"//teste do Status Code\r",
-									"pm.test(\"teste do Status Code\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
-									"});\r",
-									"\r",
-									"//teste do Tempo de Resposta\r",
-									"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-									"});\r",
-									"\r",
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"//teste do ID\r",
-									"pm.test(\"teste do ID\", () => {\r",
-									"  pm.expect(jsonData.id).to.be.a('number');});\r",
-									"\r",
-									"//teste do nome \r",
-									"pm.test(\"teste do nome\", () => {\r",
-									"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-									"\r",
-									"//teste do status\r",
-									"pm.test(\"teste do status\", () => {\r",
-									"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-									"\r",
-									"//teste do vinculo a subcategoria\r",
-									"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-									"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"tstnomstat\",\r\n  \"status\": false\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{hostCat}}/categoria/9"
-					},
-					"response": []
-				},
-				{
-					"name": "#Edicao de status",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"//teste do Status Code\r",
-									"pm.test(\"teste do Status Code\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
-									"});\r",
-									"\r",
-									"//teste do Tempo de Resposta\r",
-									"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-									"});\r",
-									"\r",
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"//teste do ID\r",
-									"pm.test(\"teste do ID\", () => {\r",
-									"  pm.expect(jsonData.id).to.be.a('number');});\r",
-									"\r",
-									"//teste do nome \r",
-									"pm.test(\"teste do nome\", () => {\r",
-									"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-									"\r",
-									"//teste do status\r",
-									"pm.test(\"teste do status\", () => {\r",
-									"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-									"\r",
-									"//teste do vinculo a subcategoria\r",
-									"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-									"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Konopelski\",\r\n  \"status\": false\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{hostCat}}/categoria/5"
-					},
-					"response": []
-				},
-				{
-					"name": "#Cadastro editado com sucesso",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"//teste do Status Code\r",
-									"pm.test(\"teste do Status Code\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
-									"});\r",
-									"\r",
-									"//teste do Tempo de Resposta\r",
-									"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-									"});\r",
-									"\r",
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"//teste do ID\r",
-									"pm.test(\"teste do ID\", () => {\r",
-									"  pm.expect(jsonData.id).to.be.a('number');});\r",
-									"\r",
-									"//teste do nome \r",
-									"pm.test(\"teste do nome\", () => {\r",
-									"  pm.expect(jsonData.nome).to.be.a(\"string\");});\r",
-									"\r",
-									"//teste do status\r",
-									"pm.test(\"teste do status\", () => {\r",
-									"  pm.expect(jsonData.status).to.be.a(\"boolean\");});\r",
-									"\r",
-									"//teste do vinculo a subcategoria\r",
-									"pm.test(\"teste do vinculo a subcategoria\", () => {\r",
-									"  pm.expect(jsonData.subCategoria).to.be.null;\r",
-									"});\r",
-									"\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"{{$randomLastName}}\",\r\n  \"status\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{hostCat}}/categoria/4"
-					},
-					"response": []
-				},
-				{
-					"name": "#Cadastro editado nome duplicado",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"//teste do Status Code\r",
-									"pm.test(\"teste do Status Code\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
-									"});\r",
-									"\r",
-									"//teste do Tempo de Resposta\r",
-									"pm.test(\"teste do Tempo de Resposta\", function () {\r",
-									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
-									"});\r",
-									"\r",
-									"//teste da Mensagem de Erro\r",
-									"const jsonData = pm.response.json();\r",
-									"\r",
-									"pm.test(\"teste da Mensagem de Erro\", () => {\r",
-									"  pm.expect(jsonData.errors.Nome[0]).to.eql(\"A categoria ja existe\");\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"nome\": \"Joseph\",\r\n  \"status\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "{{hostCat}}/categoria/4"
-					},
-					"response": []
 				}
 			]
 		},
@@ -6387,7 +6061,15 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/Categoria"
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -6405,7 +6087,15 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/Categoria"
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -6423,7 +6113,15 @@
 												}
 											}
 										},
-										"url": "{{hostapivlad}}/Categoria"
+										"url": {
+											"raw": "{{hostapivlad}}/Categoria",
+											"host": [
+												"{{hostapivlad}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								},
@@ -6441,7 +6139,15 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/Categoria"
+										"url": {
+											"raw": "{{servidor}}/Categoria",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"Categoria"
+											]
+										}
 									},
 									"response": []
 								}
@@ -6464,7 +6170,16 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/categoria/5"
+										"url": {
+											"raw": "{{servidor}}/categoria/5",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"categoria",
+												"5"
+											]
+										}
 									},
 									"response": []
 								},
@@ -6482,7 +6197,16 @@
 												}
 											}
 										},
-										"url": "{{servidor}}/categoria/4"
+										"url": {
+											"raw": "{{servidor}}/categoria/4",
+											"host": [
+												"{{servidor}}"
+											],
+											"path": [
+												"categoria",
+												"4"
+											]
+										}
 									},
 									"response": []
 								}
@@ -6507,7 +6231,16 @@
 										}
 									}
 								},
-								"url": "{{servidor}}/Subcategoria/"
+								"url": {
+									"raw": "{{servidor}}/Subcategoria/",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria",
+										""
+									]
+								}
 							},
 							"response": []
 						},
@@ -6520,7 +6253,16 @@
 									"mode": "raw",
 									"raw": "{\r\n  \"nome\": \"\",\r\n  \"categoriaId\": 0\r\n}"
 								},
-								"url": "{{servidor}}/Subcategoria/"
+								"url": {
+									"raw": "{{servidor}}/Subcategoria/",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria",
+										""
+									]
+								}
 							},
 							"response": []
 						},
@@ -6538,7 +6280,15 @@
 										}
 									}
 								},
-								"url": "{{servidor}}/Subcategoria"
+								"url": {
+									"raw": "{{servidor}}/Subcategoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
 							},
 							"response": []
 						},
@@ -6551,7 +6301,15 @@
 									"mode": "raw",
 									"raw": "{\r\n  \"nome\": \"\",\r\n  \"status\": true\r\n}"
 								},
-								"url": "{{servidor}}/Subcategoria"
+								"url": {
+									"raw": "{{servidor}}/Subcategoria",
+									"host": [
+										"{{servidor}}"
+									],
+									"path": [
+										"Subcategoria"
+									]
+								}
 							},
 							"response": []
 						}
